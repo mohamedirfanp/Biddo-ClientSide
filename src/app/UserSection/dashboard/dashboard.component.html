@@ -1,0 +1,53 @@
+<div class="main">
+    <div class="row">
+        <h1>Dashboard</h1>
+        <ng-container *ngIf="!EventList">
+            <p>Loading....</p>
+        </ng-container>
+        
+        <div class="position-absolute" style="right:5%;color: #fff;">
+        
+            <!-- <button class="btn btn-outline-danger" style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#createModel">+ New Event</button> -->
+        
+            <label class="col-auto" for="filterid">Filter by Status :  </label>
+            <select class="btn btn-outline-danger dropdown-toggle col-auto" [(ngModel)]="filter" id="filterid" (change)="onFilterChange($event)">
+                <option value="all">All</option>
+                <option value="upcoming">Upcoming</option>
+                <option value="over">Over</option>
+            </select>
+        </div>
+        <br>
+    
+        <div class="flex">
+            <ng-container *ngFor="let event of EventList;let i=index">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                      <mat-card-title>{{event.Event.eventName}}</mat-card-title>
+                      <mat-card-subtitle style="color: white">{{event.Event.eventDescription}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <p>Event Date & Time : {{event.Event.eventDate.split('T')[0]}} & {{event.Event.eventTime}}</p>
+                      <p>Given Participants : {{event.Event.totalParticipates}}</p>
+                      <p>Location : {{event.Event.eventAddress}}</p>
+                    </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-button (click)="openDialog(i)"  class="subBtn">Info</button>
+                          <button mat-button (click)="event.visibleService=true;showService(i,event)"  class="subBtn">Services</button>
+                          <ng-container *ngIf="event.Event.isCompleted">
+                              <button mat-button (click)="showVendor(i)" class="subBtn">Rating</button>
+                        </ng-container>
+                        </mat-card-actions>
+    
+                        <div class="service">
+                            <ng-container *ngIf="event.visibleService">
+                                <app-selected-service [eventList]="event.SelectedList" (closed)="event.visibleService=false;onChildClosed()"></app-selected-service>
+                            </ng-container>
+                    
+                        </div>
+                </mat-card>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+

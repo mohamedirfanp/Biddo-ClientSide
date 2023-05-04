@@ -1,0 +1,143 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+
+  /* style the checkboxes */
+input[type=checkbox] {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+/* style the labels for the checkboxes */
+label {
+  display: inline-block;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+/* style the checkbox when it's checked */
+input[type=checkbox]:checked + label {
+  font-weight: bold;
+  color: blue;
+}
+
+.toggle-example
+{
+  display: flex;
+  align-items: center;
+  margin-bottom: -5%;
+}
+.mat-mdc-form-field{
+  width: 300px;
+}
+
+.glassmorphism-card
+{
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    z-index: 10;
+
+}
+h1
+{
+  color: whitesmoke;
+}
+.event-content
+{
+  /* align-items: center; */
+  width: 90%;
+  margin: 7rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0rem;
+  height: calc(100% - 2rem);
+}
+
+.error-color
+{
+  color :rgba(255, 255, 255, 0.2);
+}
+
+.nextbtn
+{
+    
+    color:whitesmoke;
+    background-color: rgba(0, 0, 0, 0.50);
+    border:2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 100%;
+    font-weight:bold;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    cursor: pointer;
+    margin-left: 3px;
+}
+
+.prevbtn
+{
+    
+    color:whitesmoke;
+    background-color: rgba(0, 0, 0, 0.50);
+    border:2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 100%;
+    font-weight:bold;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    cursor: pointer;
+}
+
+input[type="checkbox"]
+{
+	position:relative;
+	width:40px;
+	height:40px;
+	outline:none;
+	transition:.5s;
+  appearance:none;
+}
+input[type="checkbox"]:before
+{
+	content:'';
+	position:absolute;
+	top:0;
+	left:0;
+	width:90%;
+	height:90%;
+	border: 4px solid #262626;
+	box-sizing:border-box;
+	transition:.5s;
+  appearance:none;
+}
+input:checked[type="checkbox"]:before
+{
+	border-left:none;
+	border-top:none;
+	width:20px;
+	border-color:whitesmoke;
+  appearance:none;
+  background-color: none;
+
+	transform:rotate(45deg) translate(5px, -10px);
+}
+input:checked[type="checkbox"]::after
+{
+  background-color: none;
+  appearance:none;
+}
+
+.card-body
+{
+  padding: 1rem;
+}
+
+.card-header
+{
+  font-size: 2rem;
+}

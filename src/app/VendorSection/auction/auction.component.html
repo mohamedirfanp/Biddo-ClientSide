@@ -1,0 +1,69 @@
+<div class="main-own">
+    <p-toast></p-toast>
+    <ng-container *ngIf="!eventList">
+        <h3>No Current Auctions</h3>
+    </ng-container>
+    
+    <div class="overallCard">
+    <h1 style="font-size: 2rem;" >Current Auctions</h1>
+    <div class="outerdiv" class="flex-box">
+        <ng-container *ngFor="let e of eventList" >
+            <div class="event-item">
+                <div class="header">
+                    <h2>{{e.Event.eventName}}</h2>
+                    <div class="time-comp">
+                        <div class="date">{{e.Event.eventDate.split("T")[0]}}</div>
+                        <hr>
+                        <div>{{e.Event.eventTime}}</div>
+                    </div>
+                </div>
+                <div class="others">
+                    <div class="description">
+                        <p>{{e.Event.eventDescription}}</p>
+                        <p>Address: {{e.Event.eventAddress}}</p>
+                    </div>
+                    <div>
+                        Expected Footfall: {{e.Event.totalParticipates}}
+                    </div>
+                    <hr>
+                    <div class="services">
+                        <div class="service-item" *ngFor="let s of e.Services">
+                            <div class="outer">
+                                <div class="service-name"> <h3>{{s.selectedService.selectServiceName}}</h3> </div>
+                                <div class="service-price">Rs. {{s.selectedService.minBudget}} - Rs. {{s.selectedService.maxBudget}}</div>
+                            </div>
+                            <ng-container *ngIf="s.bidding === null">
+        
+                                <div class="action-items">
+                                    <div>
+                                        <label for="price">Price: </label>
+                                        <input type="number" name="price" id="price"  placeholder="Enter your price" [(ngModel)]="s.quotedPrice">
+                                    </div>
+                                    <button class="bid" (click)="placeBid(e.Event.eventId,s.selectedService.selectServiceName,s.quotedPrice)">Bid</button>
+                                </div>
+                            </ng-container>
+        
+                            <ng-container *ngIf="s.bidding !== null">
+                                <div class="action-items">
+                                    <p>Already quoted price: {{s.bidding.bid}}</p>
+                                </div>
+                                <div class="action-items">
+                                    <div>
+                                        <label for="price">Price: </label>
+                                        <input type="number" name="price" id="price"  placeholder="Enter your price" [(ngModel)]="s.quotedPrice">
+                                    </div>
+                                    
+                                    <button class="bid" (click)="updateBid(s.bidding.bidId,s.quotedPrice)">Change Bid</button>
+                                </div>
+                            </ng-container>
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+</div>
+
+

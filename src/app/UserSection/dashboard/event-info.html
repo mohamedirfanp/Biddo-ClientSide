@@ -1,0 +1,19 @@
+<div class="info-dialog">
+    <h1 mat-dialog-title>Event Details</h1><hr>
+    <div mat-dialog-content class="info-content">
+        <h3>Event Name : {{data.eventName}}</h3>
+        <h4>Event Description: {{data.eventDescription}}</h4>
+        <h4>Event Address: {{data.eventAddress}}</h4>
+        <h4>Event Date & Time: {{data.eventDate.split('T')[0]}} & {{data.eventTime}}</h4>
+        <!-- <h4>Event Time: {{data.eventTime}}</h4> -->
+        <h4>Event Total Participants: {{data.totalParticipates}}</h4>
+        <h4>Auction Status : {{data.isAuctionCompleted == true? "Auction completed" : "Auction Going"}}</h4>
+        <!-- <p>Auction Completed at {{data.isAuctionCompleted == true? <span>{{data.auctionTimeLimit}}</span> : ""}}</p> -->
+        <h4>Event Status : {{data.isCompleted == true ? "Event Completed" : "Event OnGoing"}}</h4>
+
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()" class="closeBtn">Close</button>
+    </div>
+
+</div>

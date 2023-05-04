@@ -1,0 +1,98 @@
+<div class="glassmorphism-card">
+<mat-tab-group animationDuration="0ms" #tabGroup>
+    <mat-tab label="User" class="usertab">
+        <section id="userlogin">
+            <div class="loginform">
+                <form id="form" action="" #LogInForm = "ngForm" novalidate (ngSubmit)="LogInForm.form.valid && onLogin()">
+                    <div class="loginhead">
+                        <h1>Welcome Back! User login</h1>
+                    </div>
+                    <a class="close" (click)="MoveToHome()"><i class="bi bi-x-square-fill"></i></a>
+                    <div class="logincontents">
+                        <label>Username/E-mail id<b style="color: red;">*</b></label>
+                        <input type="email" placeholder="Enter your email id" id="loginusername" name ="email" [(ngModel)]="LoginCredential.Email" #email="ngModel" required email>
+                        <div class="validationMessages" *ngIf="this.submit && email.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Email-ID is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && email.errors?.['email']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Email-ID is required</small>
+                        </div>
+                    </div>
+                    <div class="logincontents">
+                        <label>Password<b style="color: red;">*</b></label>
+                        <input type="password" placeholder="Enter your password" minlength = "6" id="loginpassword" name ="password" [(ngModel)]="LoginCredential.Password" #password="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && password.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Password is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && password.errors?.['minlength']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Password should be at least 6 characters</small>
+                        </div>
+                    </div>
+
+                    <!-- <div>
+                        <input type="password" [(ngModel)]="LoginCredential.Password" name="password" #password="ngModel">
+                    </div> -->
+                    <br>
+                    <div class="logincontents">
+                        <button type="submit" id="loginsubmit" (click)="this.submit=true">LOGIN</button>
+                    </div>
+                    <div class="signupWant">
+                        <span>Want to Create an Account? Click </span>
+                        <button class="signup" (click)="MoveToSignup()">SIGN UP</button>
+                    </div>
+                    <br>
+                </form>
+            </div>
+          </section>
+    </mat-tab>
+    <mat-tab label="Vendor">
+        <section id="vendorlogin">
+            <div class="loginform">
+                <form id="form" action="" #LogInForm = "ngForm" novalidate (ngSubmit)="LogInForm.form.valid && onLogin()">
+                    <div class="loginhead">
+                        <h1>Welcome Back! Vendor login</h1>
+                    </div>
+                    <a class="close" (click)="MoveToHome()"><i class="bi bi-x-square-fill"></i></a>
+                    <div class="logincontents">
+                        <label>Username/E-mail id<b style="color: red;">*</b></label>
+                        <input type="email" placeholder="Enter your email id" id="loginusername" name ="email" [(ngModel)]="LoginCredential.Email" #email="ngModel" required email>
+                        <div class="validationMessages" *ngIf="this.submit && email.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Email-ID is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && email.errors?.['email']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Email-ID is required</small>
+                        </div>
+                    </div>
+                    <div class="logincontents">
+                        <label>Password<b style="color: red;">*</b></label>
+                        <input type="password" placeholder="Enter your password" minlength = "6" id="loginpassword" name ="password" [(ngModel)]="LoginCredential.Password" #password="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && password.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Password is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && password.errors?.['minlength']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Password should be at least 6 characters</small>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="logincontents">
+                        <button type="submit" id="loginsubmit" (click)="this.submit=true">LOGIN</button>
+                    </div>
+                    <div class="signupWant">
+                        <span>Want to Create an Account? Click </span>
+                        <button class="signup" (click)="MoveToSignup()">SIGN UP</button>
+                    </div>
+                    <br>
+                </form>
+            </div>
+          </section>
+    </mat-tab>
+</mat-tab-group>
+</div>

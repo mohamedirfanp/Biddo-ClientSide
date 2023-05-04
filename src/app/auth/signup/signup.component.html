@@ -1,0 +1,241 @@
+<div class="glassmorphism-card">
+<mat-tab-group animationDuration="0ms" #tabGroup>
+    <mat-tab label="User">
+        <section id="signup">
+            <div class="signupform">
+                <form action="" #SignUpForm = "ngForm" novalidate (ngSubmit)="SignUpForm.form.valid && onSignUp()">
+                    <div class="signuphead">
+                        <h1>Hello user! Sign up</h1>
+                    </div>
+                    <!-- <a class="close" (click)="MoveToHome()"><i class="bi bi-x-square-fill"></i></a> -->
+                    <div class="signupcontents">
+                        <label>Name<b style="color: red;">*</b></label>
+                        <input type="text" placeholder="Enter your name" minlength="3" name="name" id="userName" [(ngModel)]="userCredential.Name" #name="ngModel" required>
+        
+                        <div class="validationMessages" *ngIf="this.submit && name.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Name is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && name.errors?.['minlength']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Name must have minimum 3 letters</small>
+                        </div>
+                    </div>
+                    <div class="signupcontents">
+                        <label>Email ID<b style="color: red;">*</b></label>
+                        <input type="email" placeholder="Enter your email id" name="email" id="emailId" [(ngModel)]="userCredential.Email" #email="ngModel" required email>
+                        <div class="validationMessages" *ngIf="this.submit && email.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Email-ID is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && email.errors?.['email']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Email-ID is required</small>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="signupcontents">
+                        <label>Phone Number<b style="color: red;">*</b></label>
+                        <input type="tel" placeholder="Enter your mobile number" id="number" minlength="10" maxlength="10" name="phonenumber" [(ngModel)]="userCredential.PhoneNumber" #phonenumber="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && phonenumber.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid 10 Digit Phone Number is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && phonenumber.errors?.['minlength']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid 10 Digit Phone Number is required</small>
+                        </div>
+                    
+                    </div>
+                    <div class="signupcontents">
+                        <label>Password<b style="color: red;">*</b></label>
+                        <input type="password" placeholder="Enter your password" minlength="6" id="password" name="password" [(ngModel)]="userCredential.Password" #password="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && password.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Password is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && password.errors?.['minlength']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Password should be at least 6 characters</small>
+                        </div>
+                        
+                    </div>
+                    <div class="signupcontents">
+                        <label>Confirm Password<b style="color: red;">*</b></label>
+                        <input type="password" placeholder="Enter your password" minlength="6" id="confirmPwd" name="confirmPwd" [(ngModel)]="confirmPasswordValue" #confirmPwd="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && confirmPwd.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Password is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && confirmPwd.errors?.['minlength']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Password should be at least 6 characters</small>
+                        </div>
+                        
+                    </div>
+            
+                    <br>
+                    <div class="signupcontents" id=submitbtn>
+                        <button type = "submit"id="signupsubmit" (click)="submit=true">SUBMIT</button>
+                    </div>
+                    <br>
+                    <div class="loginWant">
+                        <span>Already having an account? Click </span>
+                        <button class="login" (click)="MoveToLogin()">LOGIN</button>
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </section>
+    </mat-tab>
+    <mat-tab label="Vendor">
+        <section id="signup">
+            <div class="signupform">
+                <form action="" #vendorSignUpForm = "ngForm" novalidate (ngSubmit)="vendorSignUpForm.form.valid && onSignUp()">
+                    <div class="signuphead">
+                        <h1>Hello Vendor! Sign up</h1>
+                    </div>
+                    <!-- <a class="close" (click)="MoveToHome()"><i class="bi bi-x-square-fill"></i></a> -->
+                    <div class="signupcontents">
+                        <label>Name<b style="color: red;">*</b></label>
+                        <input type="text" placeholder="Enter your name" minlength="3" name="name" id="userName" [(ngModel)]="vendorCredential.Name" #vendorname="ngModel" required>
+          
+                        <div class="validationMessages" *ngIf="this.submit && vendorname.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Name is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && vendorname.errors?.['minlength']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Name must have minimum 3 letters</small>
+                        </div>
+                    </div>
+                    <div class="signupcontents">
+                        <label>Email ID<b style="color: red;">*</b></label>
+                        <input type="email" placeholder="Enter your email id" name="email" id="emailId" [(ngModel)]="vendorCredential.Email" #vendoremail="ngModel" required email>
+                        <div class="validationMessages" *ngIf="this.submit && vendoremail.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Email-ID is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && vendoremail.errors?.['email']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Email-ID is required</small>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="signupcontents">
+                        <label>Phone Number<b style="color: red;">*</b></label>
+                        <input type="tel" placeholder="Enter your mobile number" id="number" minlength="10" maxlength="10" name="phonenumber" [(ngModel)]="vendorCredential.PhoneNumber" #vendorphonenumber="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && vendorphonenumber.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid 10 Digit Phone Number is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && vendorphonenumber.errors?.['minlength']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid 10 Digit Phone Number is required</small>
+                        </div>
+                    </div>
+
+                    <div class="signupcontents">
+                        <label>Company Name<b style="color: red;">*</b></label>
+                        <input type="text" placeholder="Enter your company name" id="CompanyName"  name="CompanyName" [(ngModel)]="vendorCredential.CompanyName" #vendorCompanyName="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && vendorCompanyName.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Company Name is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Company Name is required</small>
+                        </div>
+                     
+                    </div>
+
+                    <div class="signupcontents">
+                        <label>Company GST Number<b style="color: red;">*</b></label>
+                        <input type="text" placeholder="Enter your company GST number" id="CompanyGSTNumber"  name="CompanyGSTNumber" [(ngModel)]="vendorCredential.CompanyGSTNumber" #vendorCompanyGSTNumber="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && vendorCompanyGSTNumber.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Company GST Number is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Company GST Number is required</small>
+                        </div>
+                     
+                    </div>
+
+                    <div class="signupcontents">
+                        <label>Company Address<b style="color: red;">*</b></label>
+                        <input type="text" placeholder="Enter your Company Address" id="CompanyAddress" name="CompanyAddress" [(ngModel)]="vendorCredential.CompanyAddress" #vendorCompanyAddress="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && vendorCompanyAddress.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Company Address is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Company Address is required</small>
+                        </div>
+                     
+                    </div>
+
+                    <div class="signupcontents">
+                        <label>Service Provider<b style="color: red;">*</b></label>
+                        <div>
+                          <tag-input [formControl]="selectedServicesControl" name="selectedServiceItems" required [(ngModel)]="selectedServiceItems">
+                            <tag-input-dropdown [focusFirstElement]="true" [autocompleteItems]="serviceItems">
+                            </tag-input-dropdown>
+                          </tag-input>
+                          <div *ngIf="selectedServicesControl.invalid && (selectedServicesControl.dirty || selectedServicesControl.touched)">
+                            <small class="form-text text-danger" *ngIf="selectedServicesControl.errors" style="color: red;">
+                              At least one service must be selected.
+                            </small>
+                          </div>
+
+                        </div>
+                      </div>
+                      
+
+                    <div class="signupcontents">
+                        <label>Password<b style="color: red;">*</b></label>
+                        <input type="password" placeholder="Enter your password" minlength="6" id="password" name="password" [(ngModel)]="vendorCredential.Password" #vendorpassword="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && vendorpassword.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Password is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && vendorpassword.errors?.['minlength']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Password should be at least 6 characters</small>
+                        </div>
+                        
+                    </div>
+                    <div class="signupcontents">
+                        <label>Confirm Password<b style="color: red;">*</b></label>
+                        <input type="password" placeholder="Enter your password" minlength="6" id="confirmPwd" name="confirmPwd" [(ngModel)]="vendorconfirmPasswordValue" #vendorconfirmPwd="ngModel" required>
+                        <div class="validationMessages" *ngIf="this.submit && vendorconfirmPwd.errors?.['required']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Valid Password is required</small>
+                        </div>
+                        <div class="validationMessages" *ngIf="this.submit && vendorconfirmPwd.errors?.['minlength']" class="error">
+                            <i class="bi-exclamation-circle-fill"></i>
+                            <small >Password should be at least 6 characters</small>
+                        </div>
+                        
+                    </div>
+            
+                    <br>
+                    <div class="signupcontents" id=submitbtn>
+                        <button type = "submit"id="vendorsignupsubmit" (click)="submit=true">SUBMIT</button>
+                    </div>
+                    <br>
+                    <div class="loginWant">
+                        <span>Already having an account? Click </span>
+                        <button class="login" (click)="MoveToLogin()">LOGIN</button>
+                    </div>
+                    <br>
+                </form>
+            </div>
+          </section>
+    </mat-tab>
+</mat-tab-group>
+</div>

@@ -1,0 +1,155 @@
+
+.signupform{
+    position: relative;
+    border-radius: 20px;
+    color: black;
+    height: 91%;
+    width: 35%;
+    margin-left: 10%;
+    margin-top: 0%;
+    font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.signupform h1{
+    text-align: center;
+    padding: 6% 0 3% 0;
+    font-size: 170%;
+}
+.signupcontents{
+    padding: 2%;
+    padding-left: 15%;
+    position: relative;
+    padding-bottom: 20px;
+}
+.signupcontents label{
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 1%;
+    font-size: 110%;
+}
+.signupcontents input{
+    display: block;
+    width: 85%;
+    padding: 1.5%;
+    border: 2px solid rgb(155, 148, 148);
+    font-size: 95%;
+    border-radius: 3px;
+    background-color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.signupcontents i{
+    position: absolute;
+    top: 41.5px;
+    left:80%;
+    font-size: larger;
+}
+.signupcontents small{
+    font-weight: 500;
+    font-size: 97%;
+    position: absolute;
+}
+.signupcontents button{
+    width: 70%;
+    display: block;
+    margin-left: 7%;
+    padding: 2%;
+    color:white;
+    background-color: rgba(0, 0, 0, 0.50);
+    border:2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 100%;
+    font-weight:bold;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    cursor: pointer;
+}
+
+.signupcontents button:hover
+{
+    box-shadow: inset -5px -5px 10px rgba(255,255,255,0.05),
+    inset 5px 5px 15px rgba(0,0,0,0.5);
+    display: block;
+    transform: scale(0.98);
+}
+.signupcontents #submit input:hover{
+    letter-spacing: 3px;
+}
+
+.signupcontents .error small{
+    color: red;
+}
+.error .signupcontents input{
+    border: 3px solid red;
+}
+.error .bi-exclamation-circle-fill{
+    color: red;
+}
+
+.loginWant{
+    text-align: center;
+}
+.loginWant span{
+    font-size: large;
+    font-weight: bold;
+}
+.loginWant button{
+    position: relative;
+    /* left: 28%; */
+    padding: 10px;
+   
+    color: white;
+    background-color: rgba(0, 0, 0, 0.50);
+    border:2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 100%;
+    font-weight:bold;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    cursor: pointer;
+}
+.loginWant button:hover{
+    box-shadow: inset -5px -5px 10px rgba(255,255,255,0.05),
+    inset 5px 5px 15px rgba(0,0,0,0.5);
+}
+.glassmorphism-card
+{
+    margin: 3rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.4);
+    overflow-x: hidden;
+    overflow-y: auto;
+    backdrop-filter: blur(5px);
+    align-items: center;
+    height: 80vh;
+}
+/* .glassmorphism-card::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  
+  .glassmorphism-card::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 15px black; 
+    background:#4c527d;
+    border-radius: 10px;
+  }
+   
+  
+  .glassmorphism-card::-webkit-scrollbar-thumb {
+    background: #889; 
+    border-radius: 10px;
+  }
+  
+  
+  .glassmorphism-card::-webkit-scrollbar-thumb:hover {
+    background: #777; 
+     
+  } */
+/* .usertab
+{
+    margin-top: 2rem;
+} */
+#signup
+{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    top: 0;
+}

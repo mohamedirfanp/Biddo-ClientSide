@@ -1,0 +1,128 @@
+
+.loginform{
+    position: relative;
+    top: 15%;
+    /* background-color: #fff9f9; */
+    /* border: 5px solid #fff9f9; */
+    border-radius: 20px;
+    color: black;
+    height: 62%;
+        /* background-color: rgba(var(--d87,255,255,255),1); */
+    width: 40%;
+    font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.loginhead h1
+{
+    text-align: center;
+}
+
+.logincontents{
+    padding: 2%;
+    padding-left: 15%;
+    position: relative;
+    padding-bottom: 30px;
+}
+.logincontents label{
+    font-size: large;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 2%;
+    font-size: 110%;
+}
+.logincontents input{
+    display: block;
+    width: 85%;
+    padding: 1.5%;
+    border: 1px solid black;
+    font-size: 100%;
+    border-radius: 3px;
+    background-color: whitesmoke;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.error .bi-exclamation-circle-fill{
+    color: red;
+} 
+.error small{
+    color: red;
+}   
+.logincontents i{
+    position: absolute;
+    top: 52px;
+    left:80%;
+    font-size: 105%;
+}
+.logincontents small{
+    font-weight:bold;
+    font-size: 100%;
+    position: absolute;
+}
+.logincontents button{
+    width: 70%;
+    display: block;
+    margin-top: -5%;
+    margin-left: 7%;
+    padding: 2%;
+    color:whitesmoke;
+    /*background-color: rgb(243, 52, 141);*/
+    background-color: rgba(0, 0, 0, 0.50);
+    border:2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 100%;
+    font-weight:bold;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    cursor: pointer;
+}
+
+.logincontents button:hover
+{
+    box-shadow: inset -5px -5px 10px rgba(255,255,255,0.05),
+    inset 5px 5px 15px rgba(0,0,0,0.5);
+    display: block;
+    transform: scale(0.98);
+}
+#userlogin
+{
+    display: flex;
+    justify-content: center;
+}
+#vendorlogin
+{
+    display: flex;
+    justify-content: center;
+}
+
+.usertab
+{
+    margin-top: 2rem;
+}
+
+.glassmorphism-card
+{
+    margin: 5rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    align-items: center;
+    z-index: 10;
+
+}
+
+.signupWant
+{
+    text-align: center;
+}
+.signup
+{
+    padding: 2%;
+    color:whitesmoke;
+    background-color: rgba(0, 0, 0, 0.50);
+    border:2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    font-size: 100%;
+    font-weight:bold;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    cursor: pointer;
+}
+
