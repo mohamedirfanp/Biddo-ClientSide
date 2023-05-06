@@ -8,6 +8,7 @@ export interface IVendor
     CompanyGSTNumber : string;
     CompanyAddress : string;
     ServiceProvide : string[];
+    isServiceChanged : boolean;
 }
 
 

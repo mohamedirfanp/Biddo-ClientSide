@@ -1,0 +1,11 @@
+.card
+{
+    margin: 2rem 1rem 0rem 6rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    align-items: center;
+    z-index: 10;
+}

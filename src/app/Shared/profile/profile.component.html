@@ -1,31 +1,112 @@
-<p>profile works!</p>
-<div class="card">
+
+<div class="main">
     <h1>Profile</h1>
-    <div>
-        <label>Name : </label>
-        <input type="text" name="name">
-        <label>Email : </label>
-        <input type="email" name="email" disabled>
-        <label>Mobile Number :</label>
-        <input type="tel" name="phonenumber">
-        
+    <ng-container *ngIf="currentProfile === []">
+        <p>Loading...</p>
+    </ng-container>
+    <div class="card" *ngIf="currentProfile !== []">
+        <div class="card-body">
+
+            <ng-container *ngIf="vendorVisible === false">
+                <div>
+                    <div class="form-group">
+                        <label>Name : </label>
+                        <input type="text" name="name" [(ngModel)]="currentProfile.Profile.name" [value]="currentProfile.Profile.name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email : </label>
+                        <input type="email" name="email" [(ngModel)]="currentProfile.Profile.email" [value]="currentProfile.Profile.email" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label>Mobile Number :</label>
+                        <input type="number" name="phonenumber" [(ngModel)]="currentProfile.Profile.phoneNumber" [value]="currentProfile.Profile.phoneNumber">
+                    </div>
+                </div>
+            </ng-container>
+            <br>
+            <ng-container *ngIf="vendorVisible === true">
+                <div>
+                <div class="form-group">
+
+                    <label>Name : </label>
+                    <input type="text" name="name" [(ngModel)]="currentProfile.Profile.vendorName" [value]="currentProfile.Profile.vendorName">
+                </div>
+                <div class="form-group">
+
+                    <label>Email : </label>
+                    <input type="email" name="email" [(ngModel)]="currentProfile.Profile.vendorEmail" [value]="currentProfile.Profile.vendorEmail" disabled>
+                </div>
+                <div class="form-group">
+                <label>Mobile Number :</label>
+                <input type="number" name="phonenumber" [(ngModel)]="currentProfile.Profile.vendorPhoneNumber" [value]="currentProfile.Profile.vendorPhoneNumber">
+                </div>
+                <div class="form-group">
+
+                    <label>Comapany Name : </label>
+                    <input type="text" name="CompanyName" [(ngModel)]="currentProfile.Profile.vendorCompanyName" [value]="currentProfile.Profile.vendorCompanyName" disabled>
+                </div>
+
+                <div class="form-group">
+
+                    <label>Company GST Number : </label>
+                    <input type="text" name="CompanyGSTNumber" [(ngModel)]="currentProfile.Profile.vendorGSTNumber" [value]="currentProfile.Profile.vendorGSTNumber" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label>Company Address : </label>
+                    <input type="text" name="CompanyAddress" [(ngModel)]="currentProfile.Profile.vendorLocation" [value]="currentProfile.Profile.vendorLocation">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Provided Services : </label>
+                    <tag-input name="selectedServiceItems" required [(ngModel)]="selectedServiceItems">
+                        <tag-input-dropdown [focusFirstElement]="true" [autocompleteItems]="serviceItems">
+                        </tag-input-dropdown>
+                        </tag-input>
+                </div>
+
+                </div>
+            </ng-container>
+            <div class="btn-container">
+                <button (click)="showDialog()">Change Password</button>
+                    <p-toast></p-toast>
+                    <p-confirmPopup></p-confirmPopup>
+                    <button (click)="confirm($event)">Update Details</button>
+            </div>
+        </div>
     </div>
-    <button>Show Company Details</button>
-    <div>
-        <label>Comapany Name : </label>
-        <input type="text" name="CompanyName" disabled>
-        <label>Company GST Number : </label>
-        <input type="text" name="CompanyGSTNumber" disabled>
-        <label>Company Address : </label>
-        <input type="text" name="CompanyAddress">
-        <label>Service Provider</label>
-        <!-- <tag-input [formControl]="selectedServicesControl" name="selectedServiceItems" required [(ngModel)]="selectedServiceItems">
-            <tag-input-dropdown [focusFirstElement]="true" [autocompleteItems]="serviceItems">
-            </tag-input-dropdown>
-          </tag-input>
-         -->
-    </div>
-
-
-
 </div>
+
+
+<p-dialog header="Change Password" [(visible)]="visible" [draggable]="false" [resizable]="false" >
+    <div>
+        <div class="card">
+            <div class="form-group">
+                <label>Old Password : </label>
+                <input type="password" [(ngModel)]="changePwd.oldPassword"/>
+            </div>
+            <div class="form-group">
+                <label>New Password : </label>
+                <input type="password" [(ngModel)]="changePwd.newPassword"/>
+            </div>
+
+            <div class="form-group">
+                
+                <label>Confirm Password : </label>
+                <input type="password" [(ngModel)]="confirmPwd"/>
+            </div>
+
+        </div>
+        <div class="btn">
+
+            <button (click)="closeDialog()">
+                Cancel
+            </button>
+            <button (click)="Submit()">
+                Submit
+            </button>
+        </div>
+    </div>
+</p-dialog>

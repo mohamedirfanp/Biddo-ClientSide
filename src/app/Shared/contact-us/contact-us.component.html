@@ -1,5 +1,9 @@
 <div class="main-own">
+    <div class="main-right-top">
+        <button>+ Raise a Ticket</button>
+    </div>
     <div class="main-own-left">
+        <h2>Tickets</h2>
         <ng-container *ngFor="let conversation of conversationList; let i=index">
             <a (click)="onShowChat(conversation.conversationId, i);">
                 <div class="user-container">

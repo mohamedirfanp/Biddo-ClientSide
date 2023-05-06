@@ -7,11 +7,11 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { DashboardComponent } from './UserSection/dashboard/dashboard.component';
 import { EventComponent } from './UserSection/event/event.component';
-import { ContactUsComponent } from './UserSection/contact-us/contact-us.component';
 import { AuctionComponent } from './VendorSection/auction/auction.component';
 import { VendordashboardComponent } from './VendorSection/vendordashboard/vendordashboard.component';
 import { ProfileComponent } from './Shared/profile/profile.component';
 import { ChatComponent } from './Shared/chat/chat.component';
+import { ContactUsComponent } from './Shared/contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch : 'full'},
@@ -21,9 +21,9 @@ const routes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
   { path: 'user/dashboard', component: DashboardComponent, canActivate : [AuthGuard]},
   { path: 'user/event', component: EventComponent, canActivate : [AuthGuard]},
-  { path: 'user/contactUs', component: ContactUsComponent, canActivate : [AuthGuard]},
+  { path: 'contactUs', component: ContactUsComponent, canActivate : [AuthGuard]},
   { path: 'vendor/auction', component: AuctionComponent, canActivate : [AuthGuard]},
-  { path: 'vendor/contactUs', component: ContactUsComponent, canActivate : [AuthGuard]},
+  { path: 'contactUs', component: ContactUsComponent, canActivate : [AuthGuard]},
   { path: 'vendor/dashboard', component: VendordashboardComponent, canActivate : [AuthGuard]},
 ];
 

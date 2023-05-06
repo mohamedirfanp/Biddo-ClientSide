@@ -21,7 +21,7 @@ import { ButtonModule } from 'primeng/button';
 import { CarouselModule } from 'primeng/carousel';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
-
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 
 @NgModule({
@@ -47,7 +47,8 @@ import { ToastModule } from 'primeng/toast';
         CarouselModule,
         MatDialogModule,
         ConfirmDialogModule,
-        ToastModule
+        ToastModule,
+        ConfirmPopupModule
     ]
   })
   export class AnugularMaterialModule { }

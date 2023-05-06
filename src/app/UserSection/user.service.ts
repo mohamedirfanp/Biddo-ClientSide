@@ -62,5 +62,10 @@ export class UserService {
     return this.http.post(environment.API_URL + '/event/update/winner', {eventId : eventId, selectedServiceId : selectedServiceId , bidId : bidId, vendorId : vendorId})
   }
   
+  rescheduleAuction(eventId : number, selectedServiceId : number, selectedServiceName : string)
+  {
+    return this.http.post(environment.API_URL + '/event/reschedule/auction', {eventId : eventId, selectedServiceId : selectedServiceId, selectedServiceName : selectedServiceName})
+  }
+
 
 }

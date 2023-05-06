@@ -154,7 +154,7 @@ export class EventComponent {
 
 	  
 	  this.newEvent.EventName = this.eventForm.get('eventName').value;
-	  this.newEvent.EventDate = this.eventForm.get('eventDate').value;
+	  this.newEvent.EventDate = (this.eventForm.get('eventDate').value).toISOString().substring(0, 10);
 	  this.newEvent.EventAddress = CombinedAddress;
 	  this.newEvent.EventDescription = this.eventForm.get('eventDescription').value;
 	  this.newEvent.EventTime = this.eventForm.get('eventTime').value;
@@ -164,6 +164,9 @@ export class EventComponent {
 		Event : this.newEvent,
 		SelectedServices : selectedServices
 	  };
+
+	  console.log(this.newEvent.EventDate);
+
 
 	  this.eventService.createEvent(EventDTO);
  

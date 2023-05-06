@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ConfirmEventType, ConfirmationService, MessageService } from 'primeng/api';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-selected-service',
@@ -15,13 +16,21 @@ export class SelectedServiceComponent {
 
   @Output() closed = new EventEmitter<void>();
   visible = true;
+  ratingVisible : boolean = false;
 
-  constructor(private confirmationService: ConfirmationService, private messageService: MessageService, private eventService : UserService) {}
+  constructor(private confirmationService: ConfirmationService, private messageService: MessageService, private eventService : UserService, private route : Router) {}
 
   close() {
     this.visible = false;
     this.closed.emit();
   }
+
+  
+  closeDialog()
+    {
+    this.ratingVisible = false;
+    }
+
 
   confirm1(serviceIdx : number, bidIdx : number) {
     let currentService = this.eventList[0].Services[serviceIdx].selectedService;
@@ -35,6 +44,8 @@ export class SelectedServiceComponent {
           this.eventService.updateWinnerForService(currentService.eventId, currentService.selectedServiceId, currentBid.bidId, currentBid.vendorId).subscribe((response) => {
               this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Successfully Updated' });
               console.log(response);
+              this.route.navigate(['/user/dashboard']);
+
             }, (error) => {
               console.error(error);
             })
@@ -53,9 +64,16 @@ export class SelectedServiceComponent {
     });
 }
 
-  reschedule(eventId : number, selectedServiceId : number, selectedServiceName : string)
+rescheduleAuction(eventId : number, selectedServiceId : number, selectedServiceName : string)
   {
-    console.log(eventId, selectedServiceId, selectedServiceName);
+    this.eventService.rescheduleAuction(eventId, selectedServiceId, selectedServiceName).subscribe((response) => {
+      this.messageService.add({ severity: 'success', summary: 'Rescheduled', detail: 'Successfully Rescheduled' });
+      this.route.navigate(['/user/dashboard']);
+    },(error) => {
+      console.error(error);
+      this.messageService.add({severity : 'error', summary : 'Unknown Error', detail : 'Please try again later'});
+    }
+    );
   }
 
 }

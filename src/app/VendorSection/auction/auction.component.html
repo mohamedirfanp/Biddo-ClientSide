@@ -62,6 +62,11 @@
                 </div>
             </div>
         </ng-container>
+        <ng-container *ngIf="eventList.length === 0">
+            <div class="no-events">
+                <h3>Currently No Auctions</h3>
+            </div>
+        </ng-container>
     </div>
 </div>
 </div>

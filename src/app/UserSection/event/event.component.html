@@ -1,7 +1,7 @@
 <div class="event-content">
   <h1>Event Creation</h1>
   <div class="glassmorphism-card">
-    <mat-horizontal-stepper #stepper [linear]="false" style="background: none;" >
+    <mat-horizontal-stepper #stepper [linear]="isLinear" style="background: none;" >
         <mat-step [stepControl]="eventForm">
           <ng-template matStepLabel>Fill out Event Details</ng-template>
           <form [formGroup]="eventForm" style="width: 500px;">

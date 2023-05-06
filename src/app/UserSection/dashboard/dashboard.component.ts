@@ -1,8 +1,6 @@
 import { Component,Inject, NgModule } from '@angular/core';
 import { UserService } from '../user.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { IEvent } from '../Models/IEvent';
-
 
 export interface EventInfo {
   eventName : string;
@@ -25,6 +23,8 @@ export class DashboardComponent {
   visibleService :boolean;
   SelectedList : any = [];
 
+
+
   constructor(private eventService : UserService, private dialog : MatDialog) {
 
   }
@@ -35,11 +35,6 @@ export class DashboardComponent {
     this.getDetails();
   }
 
-  // showDialog(index : number) {
-  //     this.visible = true;
-  //     this.idx = index
-  //     console.log(this.idx);
-  // }
 
   openDialog(index : number) {
     let selectedEvent: EventInfo;

@@ -58,9 +58,9 @@
                     </a>
                 </li>
                 <li class="sidenav-nav-item">
-                    <a class="sidenav-nav-link" [routerLink]="['user/contactUs']"
+                    <a class="sidenav-nav-link" [routerLink]="['contactUs']"
                         routerLinkActive="active" [routerLinkActiveOptions] = "{exact: true}" >
-                        <fa-icon class="sidenav-link-icon" [icon]="['fas','bars']"></fa-icon>
+                        <fa-icon class="sidenav-link-icon" [icon]="['fas','headset']"></fa-icon>
                         <span class="sidenav-link-text" *ngIf="collapsed">Contact Us</span>
                     </a>
                 </li>
@@ -102,20 +102,27 @@
                     </a>
                 </li>
                 <li class="sidenav-nav-item">
-                    <a class="sidenav-nav-link" [routerLink]="['vendor/contactUs']"
-                        routerLinkActive="active" [routerLinkActiveOptions] = "{exact: true}" >
-                        <fa-icon class="sidenav-link-icon" [icon]="['fas','bars']"></fa-icon>
-                        <span class="sidenav-link-text" *ngIf="collapsed">Contact Us</span>
-                    </a>
-                </li>
-                <li class="sidenav-nav-item">
                     <a class="sidenav-nav-link" [routerLink]="['profile']"
-                        routerLinkActive="active" [routerLinkActiveOptions] = "{exact: true}"  
+                    routerLinkActive="active" [routerLinkActiveOptions] = "{exact: true}"  
                     >
-                        <fa-icon class="sidenav-link-icon" [icon]="['fas','user']"></fa-icon>
-                        <span class="sidenav-link-text" *ngIf="collapsed">Profile</span>
-                    </a>
-                </li>
+                    <fa-icon class="sidenav-link-icon" [icon]="['fas','user']"></fa-icon>
+                    <span class="sidenav-link-text" *ngIf="collapsed">Profile</span>
+                </a>
+            </li>
+            <li class="sidenav-nav-item">
+                <a class="sidenav-nav-link" [routerLink]="['chat']"
+                    routerLinkActive="active" [routerLinkActiveOptions] = "{exact: true}" >
+                    <fa-icon class="sidenav-link-icon" [icon]="['fas','comments']"></fa-icon>
+                    <span class="sidenav-link-text" *ngIf="collapsed">Chat</span>
+                </a>
+            </li>
+            <li class="sidenav-nav-item">
+                <a class="sidenav-nav-link" [routerLink]="['contactUs']"
+                    routerLinkActive="active" [routerLinkActiveOptions] = "{exact: true}" >
+                    <fa-icon class="sidenav-link-icon" [icon]="['fas','headset']"></fa-icon>
+                    <span class="sidenav-link-text" *ngIf="collapsed">Contact Us</span>
+                </a>
+            </li>
                 <div class="sidenav-nav-item bottom">
                     <button class="sidenav-nav-link"
                         (click)="OnLogout();" style="color : black">

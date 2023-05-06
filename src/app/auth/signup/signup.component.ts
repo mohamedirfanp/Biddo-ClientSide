@@ -33,7 +33,8 @@ export class SignupComponent {
 		CompanyName : '',
 		CompanyGSTNumber : '',
 		CompanyAddress : '',
-		ServiceProvide : []
+		ServiceProvide : [],
+		isServiceChanged : false
 	};
 	serviceItems = [];
 	selectedServicesControl = new FormControl('', Validators.required);

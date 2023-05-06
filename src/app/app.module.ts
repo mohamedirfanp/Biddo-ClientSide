@@ -33,7 +33,6 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BodyComponent } from './body/body.component';
 import { DashboardComponent } from './UserSection/dashboard/dashboard.component';
 import { EventComponent } from './UserSection/event/event.component';
-import { ContactUsComponent } from './UserSection/contact-us/contact-us.component';
 import { VendordashboardComponent } from './VendorSection/vendordashboard/vendordashboard.component';
 import { AuctionComponent } from './VendorSection/auction/auction.component';
 
@@ -46,6 +45,7 @@ import { SelectedServiceComponent } from './UserSection/selected-service/selecte
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ProfileComponent } from './Shared/profile/profile.component';
 import { ChatComponent } from './Shared/chat/chat.component';
+import { ContactUsComponent } from './Shared/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -57,12 +57,12 @@ import { ChatComponent } from './Shared/chat/chat.component';
     BodyComponent,
     DashboardComponent,
     EventComponent,
-    ContactUsComponent,
     VendordashboardComponent,
     AuctionComponent,
     SelectedServiceComponent,
     ProfileComponent,
-    ChatComponent
+    ChatComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

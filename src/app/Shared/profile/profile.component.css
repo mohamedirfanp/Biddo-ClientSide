@@ -1,4 +1,4 @@
-.card
+.main
 {
     margin: 2rem 1rem 0rem 6rem;
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -7,5 +7,72 @@
     overflow: hidden;
     backdrop-filter: blur(5px);
     align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     z-index: 10;
+}
+
+.card
+{
+    padding: 1.5rem;
+    color:whitesmoke;
+    background-color: rgba(0, 0, 0, 0.50);
+    border:2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: .5rem;
+}
+
+
+
+.btn-container {
+    display: flex;
+}
+
+button {
+    border: none;
+    outline: none;
+    background-color: white;
+    color: black;
+    padding: .5rem;
+    border-radius: .5rem;
+    margin-left: .5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.card input {
+    border: none;
+    outline: none;
+    background-color: white;
+    color: black;
+    padding: .5rem;
+    border-radius: .5rem;
+    margin-left: .5rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+.card input:disabled
+{
+    color: white;
+    background-color : gray;
+    cursor : not-allowed;
+} 
+
+h1
+{
+    font-size: 2rem;
+}
+
+.btn :hover
+{
+    border : 1px solid grey;
 }

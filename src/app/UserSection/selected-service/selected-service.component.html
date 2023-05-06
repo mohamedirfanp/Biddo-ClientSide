@@ -1,14 +1,17 @@
 <div class="selectServAlign" *ngIf="visible">
     <!-- TODO : Remove Not operator -->
-    <ng-container *ngIf="!eventList[0].Event.isAuctionCompleted === false">
-        <h2>Currently Auction is Going ON</h2>
-        <h3>Come Back after
-            {{eventList[0].Event.auctionTimeLimit.split('T')[0]}}
-            at
-            {{eventList[0].Event.auctionTimeLimit.split('T')[1].split('.')[0]}}</h3>
+    <ng-container *ngIf="eventList[0].Event.isAuctionCompleted === false">
+        <div class="waitCard">
+
+            <h2>Currently Auction is Going ON</h2>
+            <h3 style="color: wheat">Come Back after
+                {{eventList[0].Event.auctionTimeLimit.split('T')[0]}}
+                at
+                {{eventList[0].Event.auctionTimeLimit.split('T')[1].split('.')[0]}}</h3>
+        </div>
     </ng-container>
     <!-- TODO : Remove Not operator -->
-    <ng-container *ngIf="!eventList[0].Event.isAuctionCompleted">
+    <ng-container *ngIf="eventList[0].Event.isAuctionCompleted">
         <div *ngFor="let event of eventList">
             <ng-container *ngFor="let service of event.Services;let i=index">
                 <div class="card">
@@ -23,7 +26,6 @@
                                         - Rs
                                         {{service.selectedService.maxBudget}}</h4>
                                     <!-- </div> -->
-                                    <p>{{service.bidList}}</p>
                                 </summary>
                                 <ul>
                                     <div class="card-body">
@@ -101,15 +103,11 @@
         
                                                                 </summary>
                                                                 <ul>
-                                                                    <!-- <li>
-                                                                        <button (click)="confirm1(i,bidIdx)" label="Confirm">Accept</button>
-                                                                    </li> -->
-                                                                    <li>
-                                                                        <button (click)="reschedule(service.selectedService.eventId,service.selectedService.selectedServiceId,service.selectedService.selectServiceName)">Resecdule Auction</button>
+                                                                    <li *ngIf="!event.isCompleted">
+                                                                        <button (click)="rescheduleAuction(service.selectedService.eventId,service.selectedService.selectedServiceId,service.selectedService.selectServiceName)">Reschedule Auction</button>
                                                                     </li>
                                                                 </ul>
                                                             </details>
-    
                                                     </div>
                                                 </li>
                                             </div>
@@ -162,3 +160,34 @@
   });
 
 </script>
+
+
+<p-dialog header="Rate Your Vendor" [(visible)]="ratingVisible" [draggable]="false" [resizable]="false" >
+    <div>
+        <div class="card">
+            <div class="form-group">
+                <label>Old Password : </label>
+                <!-- <input type="password" [(ngModel)]="changePwd.oldPassword"/> -->
+            </div>
+            <div class="form-group">
+                <label>New Password : </label>
+                <!-- <input type="password" [(ngModel)]="changePwd.newPassword"/> -->
+            </div>
+
+            <div class="form-group">
+                <label>Confirm Password : </label>
+                <!-- <input type="password" [(ngModel)]="confirmPwd"/> -->
+            </div>
+
+        </div>
+        <div class="btn">
+
+            <button (click)="closeDialog()">
+                Cancel
+            </button>
+            <!-- <button (click)="Submit()">
+                Submit
+            </button> -->
+        </div>
+    </div>
+</p-dialog>
