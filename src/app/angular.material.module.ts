@@ -22,6 +22,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { RatingModule } from 'primeng/rating';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
         MatDialogModule,
         ConfirmDialogModule,
         ToastModule,
-        ConfirmPopupModule
+        ConfirmPopupModule,
+        RatingModule
     ]
   })
   export class AnugularMaterialModule { }

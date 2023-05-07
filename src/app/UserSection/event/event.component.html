@@ -126,13 +126,13 @@
               <mat-form-field>
                 <mat-label>Minimum Budget</mat-label>
                 <input matInput formControlName="minBudget" placeholder="Minimum Budget" type="number" min="2000">
-                <mat-error *ngIf="group.controls['minBudget'].invalid">Please provide a valid Budget.</mat-error>
+                <mat-error *ngIf="group.controls['minBudget'].invalid">Please provide a valid Budget.(Minimum Rs.2000)</mat-error>
               </mat-form-field>
               <br>
               <mat-form-field>
                 <mat-label>Maximum Budget</mat-label>
-                <input matInput formControlName="maxBudget" placeholder="Maximum Budget" type="number">
-                <mat-error *ngIf="group.controls['maxBudget'].invalid">Please provide a valid Budget.</mat-error>
+                <input matInput formControlName="maxBudget" placeholder="Maximum Budget" type="number" [min]="group.controls['minBudget'].value">
+                <mat-error *ngIf="group.controls['maxBudget'].invalid">Budget greater than Min Budget</mat-error>
               </mat-form-field>
             </form>
           </div>

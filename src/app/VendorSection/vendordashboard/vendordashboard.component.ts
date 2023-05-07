@@ -9,6 +9,8 @@ import { VendorService } from '../vendor.service';
 export class VendordashboardComponent {
 
   EventList : any = [];
+  selectedService : any = [];
+  filter : string = 'all';
 
   constructor(private vendorService : VendorService) {
     
@@ -16,12 +18,26 @@ export class VendordashboardComponent {
 
   ngOnInit()
   {
-    this.vendorService.ListEventForVendor().subscribe((response)=>{
-      this.EventList =response;
+    this.getEventList();
+
+  }
+
+  getEventList()
+  {
+    this.vendorService.ListEventForVendor(this.filter).subscribe((response : any)=>{
+      this.EventList =response[0];
+      this.selectedService = response[1];
+      console.log(this.EventList);
+      console.log(this.selectedService);
     }, (error)=>{
       console.log(error);
     })
+  }
 
+  onFilterChange(event)
+  {
+    this.filter = event.target.value;
+    this.getEventList();
   }
   
 }

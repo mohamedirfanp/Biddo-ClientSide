@@ -51,9 +51,9 @@ export class UserService {
   }
 
 
-  ListEvents()
+  ListEvents(filter : string)
   {
-    return this.http.get(environment.API_URL + '/event/user/ListEvents');
+    return this.http.get(environment.API_URL + '/event/user/ListEvents/' + filter );
   }
 
 
@@ -65,6 +65,10 @@ export class UserService {
   rescheduleAuction(eventId : number, selectedServiceId : number, selectedServiceName : string)
   {
     return this.http.post(environment.API_URL + '/event/reschedule/auction', {eventId : eventId, selectedServiceId : selectedServiceId, selectedServiceName : selectedServiceName})
+  }
+
+  addRating(eventId : number, selectedServiceId : number, selectedServiceName : string, vendorId : number, userreview : string, rating : number) {
+    return this.http.post(environment.API_URL + '/event/add/rating', {eventId : eventId, selectedServiceId : selectedServiceId, ServiceName : selectedServiceName,vendorId: vendorId, review : userreview, rating : rating});
   }
 
 

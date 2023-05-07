@@ -1,1 +1,55 @@
-<p>vendordashboard works!</p>
+<div class="main">
+    <div class="row">
+        <h1>Dashboard</h1>
+        <ng-container *ngIf="!EventList">
+            <p>Loading....</p>
+        </ng-container>
+        
+        <div class="position-absolute" style="right:5%;color: #fff;">
+        
+            <!-- <button class="btn btn-outline-danger" style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#createModel">+ New Event</button> -->
+        
+            <label class="col-auto" for="filterid">Filter by Status :  </label>
+            <select class="btn btn-outline-danger dropdown-toggle col-auto" [(ngModel)]="filter" id="filterid" (change)="onFilterChange($event)">
+                <option value="all">All</option>
+                <option value="win">Win</option>
+            </select>
+        </div>
+        <br>
+    
+        <div class="flex">
+            <ng-container *ngFor="let event of EventList;let i=index">
+
+                <mat-card class="example-card">
+                    <mat-card-header>
+                      <mat-card-title>{{event[0].event.eventName}}</mat-card-title>
+                      <mat-card-subtitle style="color: white">{{event[0].event.eventDescription}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                    <p>Event Date & Time : {{event[0].event.eventDate.split('T')[0]}} & {{event[0].event.eventTime}}</p>
+                    <p>Given Participants : {{event[0].event.totalParticipates}}</p>
+                    <p>Location : {{event[0].event.eventAddress}}</p>
+                    <ng-container *ngFor="let singleEvent of event; let idx=index">
+                        <p>For Service : {{singleEvent.selectedServiceName}}</p>
+                        <p>Quoted Price : {{singleEvent.bid}}</p>
+                        <ng-container *ngIf="singleEvent.win === true">
+                          <p>Status : Accepted</p>
+                        </ng-container>
+                        <ng-container *ngIf="singleEvent.win === false">
+                          <ng-container *ngIf="selectedService[i][singleEvent.eventId][idx].isServiceCompleted === false">
+                              <p>Status : Not Decided</p>
+                          </ng-container>
+                          <ng-container *ngIf="selectedService[i][singleEvent.eventId][idx].isServiceCompleted === true">
+                              <p>Status : Rejected</p>
+                          </ng-container>
+                        </ng-container>
+                    </ng-container>
+                        </mat-card-content>
+                </mat-card>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+
+

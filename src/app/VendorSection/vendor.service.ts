@@ -38,9 +38,9 @@ export class VendorService {
     return this.http.post(environment.API_URL+ '/event/vendor/updateBid', { "BidId" : bidId, "Bid" : bid});
   }
 
-  ListEventForVendor()
+  ListEventForVendor(filter : string)
   {
-    return this.http.get(environment.API_URL + "/event/vendor/ListEvent");
+    return this.http.get(environment.API_URL + "/event/vendor/ListEvent/" + filter);
   }
 
 }

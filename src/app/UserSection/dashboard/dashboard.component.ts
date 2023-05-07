@@ -1,6 +1,7 @@
 import { Component,Inject, NgModule } from '@angular/core';
 import { UserService } from '../user.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MessageService } from 'primeng/api';
 
 export interface EventInfo {
   eventName : string;
@@ -19,13 +20,21 @@ export class DashboardComponent {
   searchInput : string = "";
   EventList : any = [];
   idx = 0;
+  selectedServiceIdx: string = '-1';
+  
   visible: boolean;
   visibleService :boolean;
+  ratingVisible : boolean;
+  isSubmitClicked = false;
+
+
   SelectedList : any = [];
+  selectedRatingList : any = [];
+
+  value : number;
 
 
-
-  constructor(private eventService : UserService, private dialog : MatDialog) {
+  constructor(private eventService : UserService, private dialog : MatDialog,private messageService: MessageService) {
 
   }
   
@@ -46,6 +55,7 @@ export class DashboardComponent {
     });
   }
 
+
   showService(index : number, event: any)
   {
     if(!event.SelectedList  || event.SelectedList.length > 0)
@@ -57,7 +67,17 @@ export class DashboardComponent {
 
   showVendor(index : number)
   {
-    console.log(index);
+    this.selectedRatingList = this.EventList[index];
+    console.log(this.selectedRatingList);
+    this.ratingVisible = true;
+  }
+
+  closeVendor()
+  {
+    this.ratingVisible = false;
+    this.selectedServiceIdx = '-1';
+    this.selectedRatingList = [];
+    this.isSubmitClicked = false;
   }
 
   onChildClosed() {
@@ -68,24 +88,40 @@ export class DashboardComponent {
 
   onFilterChange(event)
   {
+    this.filter = event.target.value;
+    console.log(this.filter);
     this.getDetails();
   }
 
   getDetails()
   {
-
-    this.eventService.ListEvents().subscribe((response) => {
+    this.eventService.ListEvents(this.filter).subscribe((response) => {
       console.log(response)
       this.EventList = response;
     },(error)=>{
       console.error(error);
     })
-    // this.eventhandler.getAppointment(this.filter,this.searchInput).subscribe((data) => {
-    // this.appointmentsList = data;
-    
-    //   }, (err) => {
-    //       Swal.fire("Oops!",err.error.message,"error");
-    //   });
+  }
+
+  OnSubmitRating()
+  {
+    this.isSubmitClicked = true;
+    if (!this.selectedRatingList.Services[this.selectedServiceIdx].userreview || !this.selectedRatingList.Services[this.selectedServiceIdx].ratingvalue) {
+        return;
+    }
+    console.log(this.selectedRatingList);
+
+    this.eventService.addRating(this.selectedRatingList.Event.eventId,this.selectedRatingList.Services[this.selectedServiceIdx].selectedService.selectedServiceId,this.selectedRatingList.Services[this.selectedServiceIdx].selectedService.selectServiceName, this.selectedRatingList.Services[this.selectedServiceIdx].vendorList[0].vendorId, this.selectedRatingList.Services[this.selectedServiceIdx].userreview, this.selectedRatingList.Services[this.selectedServiceIdx].ratingvalue).subscribe((response)=>{
+      console.log(response);
+      this.messageService.add({severity : "success", summary : "Updated Rating", detail : "Successfully Updated Rating"});
+      this.closeVendor();
+      this.getDetails();
+      
+    }, (error)=>{
+      console.log(error);
+    })
+
+
   }
 
 }

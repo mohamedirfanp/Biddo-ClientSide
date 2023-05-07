@@ -97,13 +97,13 @@
                                                                 <summary>
                                                                     No Bids Available
                                                                     <div>
-                                                                        <p>Suggest to Reschedule this Auction</p>
+                                                                        <p *ngIf="event.isCompleted === false">Suggest to Reschedule this Auction</p>
                                                                         
                                                                     </div>
         
                                                                 </summary>
                                                                 <ul>
-                                                                    <li *ngIf="!event.isCompleted">
+                                                                    <li *ngIf="event.isCompleted === false">
                                                                         <button (click)="rescheduleAuction(service.selectedService.eventId,service.selectedService.selectedServiceId,service.selectedService.selectServiceName)">Reschedule Auction</button>
                                                                     </li>
                                                                 </ul>
@@ -162,32 +162,3 @@
 </script>
 
 
-<p-dialog header="Rate Your Vendor" [(visible)]="ratingVisible" [draggable]="false" [resizable]="false" >
-    <div>
-        <div class="card">
-            <div class="form-group">
-                <label>Old Password : </label>
-                <!-- <input type="password" [(ngModel)]="changePwd.oldPassword"/> -->
-            </div>
-            <div class="form-group">
-                <label>New Password : </label>
-                <!-- <input type="password" [(ngModel)]="changePwd.newPassword"/> -->
-            </div>
-
-            <div class="form-group">
-                <label>Confirm Password : </label>
-                <!-- <input type="password" [(ngModel)]="confirmPwd"/> -->
-            </div>
-
-        </div>
-        <div class="btn">
-
-            <button (click)="closeDialog()">
-                Cancel
-            </button>
-            <!-- <button (click)="Submit()">
-                Submit
-            </button> -->
-        </div>
-    </div>
-</p-dialog>

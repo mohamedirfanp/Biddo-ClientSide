@@ -7,7 +7,6 @@
         
         <div class="position-absolute" style="right:5%;color: #fff;">
         
-            <!-- <button class="btn btn-outline-danger" style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#createModel">+ New Event</button> -->
         
             <label class="col-auto" for="filterid">Filter by Status :  </label>
             <select class="btn btn-outline-danger dropdown-toggle col-auto" [(ngModel)]="filter" id="filterid" (change)="onFilterChange($event)">
@@ -52,3 +51,66 @@
 
 
 
+<p-dialog header="Rate Your Vendor" [(visible)]="ratingVisible" [draggable]="false" [resizable]="false" >
+    <div>
+        <ng-container *ngIf="selectedRatingList.length !== 0">
+            <div class="card">
+
+                    <div class="form-field">
+                        <label>Event Name :</label>
+                        <label>{{selectedRatingList.Event.eventName}}</label>
+                    </div>
+                    <div class="form-field">
+                        <label>Held On :</label>
+                        <label>{{selectedRatingList.Event.eventDate.split('T')[0]}} & {{selectedRatingList.Event.eventTime}}</label>
+                    </div>
+                    <div class="form-field">
+
+                        <label>Service Name</label>
+                        <div>
+
+                            <select [(ngModel)]="selectedServiceIdx">
+                                <ng-container *ngFor="let service of selectedRatingList.Services;let i=index">
+                                    <ng-container *ngIf="service.ratingStatus === false">
+                                        <option [value]="i">{{service.selectedService.selectServiceName}}</option>
+                                    </ng-container>
+                                </ng-container>
+                            </select>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="selectedServiceIdx !== '-1'">
+
+                        <div class="form-field">
+
+                            <label>Vendor Name : </label>
+                            <label>{{selectedRatingList.Services[selectedServiceIdx].vendorList[0].vendorName}}</label>
+                        </div>
+
+                        <div class="form-field">
+
+                            <label>Accepted Price :</label>
+                            <label>{{selectedRatingList.Services[selectedServiceIdx].bidList[0].bid}}</label>
+                        </div>
+                        <div class="form-field">
+                            <label>Review</label>
+                            <input type="text" minlength="15" [(ngModel)]="selectedRatingList.Services[selectedServiceIdx].userreview" required>
+                        </div>
+                        <mat-error *ngIf="isSubmitClicked && !selectedRatingList.Services[selectedServiceIdx].userreview" style="font-style: italic;">*Review is required</mat-error>
+                        <div class="form-field">
+                            <label>Rating</label>
+                            <p-rating [(ngModel)]="selectedRatingList.Services[selectedServiceIdx].ratingvalue" [cancel]="false"></p-rating>
+                        </div>                      
+                        <mat-error *ngIf="isSubmitClicked && !selectedRatingList.Services[selectedServiceIdx].ratingvalue" style="font-style: italic;">*Rating is required and Must greater than Zero</mat-error>
+                    </ng-container>
+                </div>
+            <div class="btn">
+                <button (click)="closeVendor()">
+                    Cancel
+                </button>
+                <button (click)="OnSubmitRating()">
+                    Submit
+                </button>
+            </div>
+        </ng-container>
+    </div>
+</p-dialog>

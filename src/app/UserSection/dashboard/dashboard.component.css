@@ -52,3 +52,52 @@ h1
   background-color: rgba(61, 59, 59, 0.5);
   border-radius: 5px;
 }
+
+.card > label 
+{
+    display: block;
+
+}
+
+.card
+{
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    gap : .5rem;
+}
+
+.form-field
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btn
+{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .5rem;
+    margin-top: 1rem;
+    padding : .2rem;
+    border-radius: 5px;
+    border : 2px solid black;
+}
+.btn:hover
+{
+    background-color: gray;
+    color: white;
+}
+
+.position-absolute
+{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.position-absolute select
+{
+    margin-top: 0;
+}
