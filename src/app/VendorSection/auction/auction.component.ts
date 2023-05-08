@@ -59,7 +59,7 @@ export class AuctionComponent {
   }
   updateBid(bidId : number, bid : number, existingBid : number)
   {
-    if(!(bid > (existingBid+100)))
+    if(!(bid > (existingBid-100)))
     {
       this.bidSubmitted = true;
       return;

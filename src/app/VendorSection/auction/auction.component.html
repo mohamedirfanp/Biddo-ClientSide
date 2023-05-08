@@ -47,13 +47,13 @@
                             <ng-container *ngIf="s.bidding !== null">
                                 <div class="action-item">
                                     <p>Already quoted price: {{s.bidding.bid}}</p>
-                                    <p style="font-style: italic; color: yellow; align-items: center; font-size: .7rem;">*Minimum Increment Amount is 100 per Bid</p>
+                                    <p style="font-style: italic; color: yellow; align-items: center; font-size: .7rem;">*Minimum Decrement Amount is 100 per Bid</p>
                                 </div>
                                 <div class="action-items">
                                     <div>
                                         <label for="price">Price: </label>
                                         <input type="number" name="price" id="price"  placeholder="Enter your price" [(ngModel)]="s.quotedPrice">
-                                        <mat-error *ngIf="bidSubmitted && (s.quotedPrice < (s.bidding.bid + 100))" style="font-style: italic;">*Minimum Increment Amount is 100</mat-error>
+                                        <mat-error *ngIf="bidSubmitted && (s.quotedPrice < (s.bidding.bid - 100))" style="font-style: italic;">*Minimum Decrement Amount is 100</mat-error>
                                     </div>
                                     <button class="bid" (click)="updateBid(s.bidding.bidId,s.quotedPrice,s.bidding.bid)">Change Bid</button>
                                 </div>
