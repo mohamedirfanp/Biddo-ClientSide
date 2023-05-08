@@ -72,4 +72,9 @@ export class UserService {
   }
 
 
+  MoveToChat()
+  {
+    return this.route.navigateByUrl('/chat')
+  }
+
 }

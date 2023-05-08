@@ -1,11 +1,10 @@
 .event-item {
     color:whitesmoke;
     background-color: rgba(0, 0, 0, 0.50);
-    border:2px solid rgba(0, 0, 0, 0.2);
+    border:1px solid var(--header-color);
     /* border-radius: 5px; */
     border-radius: 10px;
     overflow: hidden;
-    backdrop-filter: blur(5px);
     display: flex;
     flex-direction: column;
     color: white;
@@ -38,9 +37,9 @@
     padding: .5rem;
     border-radius: .5rem .5rem 0 0;
     /* color: ; */
-    background-color: rgba(43, 38, 44, 0.8);
+    background-color: inherit;
     backdrop-filter: blur(10px);
-    border:2px solid rgba(0, 0, 0, 0.2);
+    border:1px solid var(--header-color);
     border-radius: 5px;
 }
 h2,h3 {
@@ -67,9 +66,9 @@ h2,h3 {
     align-items: baseline;
     padding: .5rem;
     border-radius: 1rem 0 0 0;
-    background-color: rgba(43, 38, 44, 0.8);
-    backdrop-filter: blur(10px);
-    border:2px  rgba(0, 0, 0, 0.2);
+    /* background-color: rgba(43, 38, 44, 0.8); */
+    background-color: inherit;
+    border:1px solid var(--header-color);
     /* border-radius: 5px; */
     height: 100%;
     /* color: black; */
@@ -89,7 +88,7 @@ h2,h3 {
 }
 
 .service-item {
-    border: 1px solid white;
+    border: 1px solid var(--header-color);
     border-radius: 1rem 0 1rem 0 ;
     display: flex;
     flex-direction: column;
@@ -107,16 +106,10 @@ h2,h3 {
     align-items: baseline;
 }
 
-button {
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    cursor: pointer;
-    font-weight: 500;
-}
-.bid {
+
+/* .bid {
     background-color: lightgreen;
-}
+} */
 .services {
     display: flex;
     align-items: center;
@@ -167,8 +160,8 @@ input {
     display: block;
     color : black; */
     margin: 2rem 7rem 7rem 7rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.4);
+    border: 2px solid var(--header-color);
+    background: inherit;
     border-radius: 10px;
     overflow: hidden;
     backdrop-filter: blur(5px);
@@ -180,3 +173,35 @@ h1
 {
     padding: 12px;
 }
+
+.action-item
+{
+    align-items: center;
+    text-align: center;
+}
+.action-item > p 
+{
+    margin-bottom: .1rem;
+}
+
+button {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--header-color);
+    border-radius: 5px;
+    padding: .5rem;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    margin-right: .3rem;
+    margin-left: .3rem;
+  
+  }
+  
+  button:hover {
+    color: whitesmoke;
+    transform: scale(1.1);
+    outline: 1px solid rgba(255, 0, 0, 0.2);
+    background-color: rgba(61, 59, 59, 0.5);
+    border-radius: 5px;
+  }

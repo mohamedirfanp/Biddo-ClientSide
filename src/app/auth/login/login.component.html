@@ -1,6 +1,9 @@
 <div class="glassmorphism-card">
 <mat-tab-group animationDuration="0ms" #tabGroup>
-    <mat-tab label="User" class="usertab">
+    <mat-tab class="usertab">
+        <ng-template mat-tab-label>
+            <span class="my-custom-class">User</span>
+        </ng-template>
         <section id="userlogin">
             <div class="loginform">
                 <form id="form" action="" #LogInForm = "ngForm" novalidate (ngSubmit)="LogInForm.form.valid && onLogin()">
@@ -49,7 +52,10 @@
             </div>
           </section>
     </mat-tab>
-    <mat-tab label="Vendor">
+    <mat-tab >
+        <ng-template mat-tab-label>
+            <span class="my-custom-class">Vendor</span>
+        </ng-template>
         <section id="vendorlogin">
             <div class="loginform">
                 <form id="form" action="" #LogInForm = "ngForm" novalidate (ngSubmit)="LogInForm.form.valid && onLogin()">

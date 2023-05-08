@@ -1,6 +1,6 @@
 .example-card {
     max-width: 400px;
-  }
+}
 
 .flex {
     display: flex;
@@ -12,92 +12,100 @@
 
 .main {
     margin: 2rem 1rem 0rem 6rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.4);
+    border: 2px solid var(--header-color);
+    /* background: rgba(255, 255, 255, 0.4); */
     border-radius: 10px;
     overflow: hidden;
     backdrop-filter: blur(5px);
     align-items: center;
     z-index: 10;
-    
+
 }
 
-h1
-{
+h1 {
     color: #fff;
 }
 
-.example-card
-{
-    color:whitesmoke;
-    background-color: rgba(0, 0, 0, 0.50);
-    border:2px solid rgba(0, 0, 0, 0.2);
+.example-card {
+    color: whitesmoke;
+    background-color: inherit;
+    border: 1px solid var(--header-color);
     border-radius: 5px;
     margin-bottom: 2rem;
+    /* box-shadow: 5px 5px 5px var(--header-color); */
+    box-shadow: 8px 8px 9px -6px #444;
 }
-.row
-{
+
+.row {
     padding: .5rem;
 }
 
-.subBtn
-{
-    color: white;
-}
-.subBtn:hover
-{
-    color: whitesmoke;
-  transform: scale(0.98);   
-  outline:2px solid rgba(255, 0, 0, 0.2);
-  background-color: rgba(61, 59, 59, 0.5);
-  border-radius: 5px;
-}
 
-.card > label 
-{
+
+.card>label {
     display: block;
 
 }
 
-.card
-{
+.subBtn {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--header-color);
+    border-radius: 5px;
+    padding: .5rem;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    margin-right: .3rem;
+
+}
+
+.subBtn:hover {
+    color: whitesmoke;
+    transform: scale(1.1);
+    outline: 1px solid rgba(255, 0, 0, 0.2);
+    background-color: rgba(61, 59, 59, 0.5);
+    border-radius: 5px;
+}
+
+.card {
     display: flex;
     flex-direction: column;
     width: 350px;
-    gap : .5rem;
+    gap: .5rem;
 }
 
-.form-field
-{
+.form-field {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.btn
-{
+
+.btn {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: .5rem;
     margin-top: 1rem;
-    padding : .2rem;
+    padding: .2rem;
     border-radius: 5px;
-    border : 2px solid black;
-}
-.btn:hover
-{
-    background-color: gray;
-    color: white;
+    border: 2px solid black;
+    padding: .5rem;
 }
 
-.position-absolute
-{
+.btn:hover {
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+
+}
+
+.position-absolute {
     display: flex;
     align-items: center;
     gap: .5rem;
 }
 
-.position-absolute select
-{
+.position-absolute select {
     margin-top: 0;
 }

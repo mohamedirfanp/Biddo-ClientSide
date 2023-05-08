@@ -30,11 +30,11 @@
                       <p>Location : {{event.Event.eventAddress}}</p>
                     </mat-card-content>
                         <mat-card-actions>
-                            <button mat-button (click)="openDialog(i)"  class="subBtn">Info</button>
-                          <button mat-button (click)="event.visibleService=true;showService(i,event)"  class="subBtn">Services</button>
-                          <ng-container *ngIf="event.Event.isCompleted">
-                              <button mat-button (click)="showVendor(i)" class="subBtn">Rating</button>
-                        </ng-container>
+                                <button (click)="openDialog(i)"  class="subBtn">Info</button>
+                              <button (click)="event.visibleService=true;showService(i,event)"  class="subBtn">Services</button>
+                              <ng-container *ngIf="event.Event.isCompleted">
+                                  <button (click)="showVendor(i)" class="subBtn">Rating</button>
+                            </ng-container>
                         </mat-card-actions>
     
                         <div class="service">
@@ -79,35 +79,42 @@
                         </div>
                     </div>
                     <ng-container *ngIf="selectedServiceIdx !== '-1'">
+                        <ng-container *ngIf="selectedRatingList.Services[selectedServiceIdx].vendorList.length > 0">
 
-                        <div class="form-field">
+                            <div class="form-field">
+    
+                                <label>Vendor Name : </label>
+                                <label>{{selectedRatingList.Services[selectedServiceIdx].vendorList[0].vendorName}}</label>
+                            </div>
+    
+                            <div class="form-field">
+    
+                                <label>Accepted Price :</label>
+                                <label>{{selectedRatingList.Services[selectedServiceIdx].bidList[0].bid}}</label>
+                            </div>
+                            <div class="form-field">
+                                <label>Review</label>
+                                <input type="text" minlength="15" [(ngModel)]="selectedRatingList.Services[selectedServiceIdx].userreview" required>
+                            </div>
+                            <mat-error *ngIf="isSubmitClicked && !selectedRatingList.Services[selectedServiceIdx].userreview" style="font-style: italic;">*Review is required</mat-error>
+                            <div class="form-field">
+                                <label>Rating</label>
+                                <p-rating [(ngModel)]="selectedRatingList.Services[selectedServiceIdx].ratingvalue" [cancel]="false"></p-rating>
+                            </div>                      
+                            <mat-error *ngIf="isSubmitClicked && !selectedRatingList.Services[selectedServiceIdx].ratingvalue" style="font-style: italic;">*Rating is required and Must greater than Zero</mat-error>
+                        </ng-container>
 
-                            <label>Vendor Name : </label>
-                            <label>{{selectedRatingList.Services[selectedServiceIdx].vendorList[0].vendorName}}</label>
-                        </div>
+                        <ng-container *ngIf="selectedRatingList.Services[selectedServiceIdx].vendorList.length === 0">
+                            <p>Sorry, No Vendor take place in the Auction</p>
+                        </ng-container>
 
-                        <div class="form-field">
-
-                            <label>Accepted Price :</label>
-                            <label>{{selectedRatingList.Services[selectedServiceIdx].bidList[0].bid}}</label>
-                        </div>
-                        <div class="form-field">
-                            <label>Review</label>
-                            <input type="text" minlength="15" [(ngModel)]="selectedRatingList.Services[selectedServiceIdx].userreview" required>
-                        </div>
-                        <mat-error *ngIf="isSubmitClicked && !selectedRatingList.Services[selectedServiceIdx].userreview" style="font-style: italic;">*Review is required</mat-error>
-                        <div class="form-field">
-                            <label>Rating</label>
-                            <p-rating [(ngModel)]="selectedRatingList.Services[selectedServiceIdx].ratingvalue" [cancel]="false"></p-rating>
-                        </div>                      
-                        <mat-error *ngIf="isSubmitClicked && !selectedRatingList.Services[selectedServiceIdx].ratingvalue" style="font-style: italic;">*Rating is required and Must greater than Zero</mat-error>
                     </ng-container>
                 </div>
-            <div class="btn">
-                <button (click)="closeVendor()">
+            <div class="flex">
+                <button (click)="closeVendor()" class="btn">
                     Cancel
                 </button>
-                <button (click)="OnSubmitRating()">
+                <button (click)="OnSubmitRating()" class="btn">
                     Submit
                 </button>
             </div>

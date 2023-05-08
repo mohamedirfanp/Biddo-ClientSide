@@ -37,13 +37,13 @@
                                                             <details >
                                                                 <summary>
                                                                     Anonymous Vendor :Rs. {{singlebid.bid}}
-                                                                    <div>
-                                                                        Vendor rating:
-                                                                        <ng-container *ngFor="let number of [1,2,3]">
-                                                                            <fa-icon class="sidenav-link-icon" [icon]="['fas','star']"></fa-icon>
+                                                                    <div class="vendor-rating">
+                                                                        <label>Vendor rating:</label>
+                                                                        <ng-container *ngIf="service.ratingList[0] !== 0">
+                                                                            <p-rating [(ngModel)]="service.ratingList[0]" [readonly]="true" [cancel]="false"></p-rating>
                                                                         </ng-container>
-                                                                        <ng-container *ngFor="let number of [1,2]">
-                                                                            <fa-icon class="sidenav-link-icon" [icon]="['far','star']"></fa-icon>
+                                                                        <ng-container *ngIf="service.ratingList[0] === 0">
+                                                                            <p>No Rating</p>
                                                                         </ng-container>
                                                                     </div>
                                                                 </summary>
@@ -58,16 +58,15 @@
                                                             <details >
                                                                 <summary>
                                                                     Selected Vendor
-                                                                    <div>
-                                                                        Vendor rating:
-                                                                        <ng-container *ngFor="let number of [1,2,3]">
-                                                                            <fa-icon class="sidenav-link-icon" [icon]="['fas','star']"></fa-icon>
+                                                                    <!-- <div class="vendor-rating">
+                                                                        <label>Vendor rating:</label>
+                                                                        <ng-container *ngIf="service.ratingList[0] !== 0">
+                                                                            <p-rating [(ngModel)]="service.ratingList[0]" [readonly]="true" [cancel]="false"></p-rating>
                                                                         </ng-container>
-                                                                        <ng-container *ngFor="let number of [1,2]">
-                                                                            <fa-icon class="sidenav-link-icon" [icon]="['far','star']"></fa-icon>
+                                                                        <ng-container *ngIf="service.ratingList[0] === 0">
+                                                                            <p>No Rating</p>
                                                                         </ng-container>
-                                                                        
-                                                                    </div>
+                                                                    </div> -->
         
                                                                 </summary>
                                                                 <ul>
@@ -79,6 +78,10 @@
                                                                         <p>Vendor Email : {{service.vendorList[bidIdx].vendorEmail}}</p>
                                                                         <p>Vendor PhoneNumber : {{service.vendorList[bidIdx].vendorPhoneNumber}}</p>
                                                                         <p>Accepted Price : {{singlebid.bid}}</p>
+                                                                        
+                                                                    </li>
+                                                                    <li>
+                                                                        <button (click)="MoveToChat()">Chat</button>
                                                                     </li>
                                                                 </ul>
                                                             </details>

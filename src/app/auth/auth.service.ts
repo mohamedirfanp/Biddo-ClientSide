@@ -35,7 +35,13 @@ submit = false;
 
   getRole()
   {
-    return sessionStorage.getItem("Role");
+    let token = sessionStorage.getItem('jwtToken');
+    if (token)
+    {
+      let decodedJWT = JSON.parse(window.atob(token.split('.')[1]));
+      return decodedJWT['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+    }
+    return null;
   }
   MoveToLogin()
   {
@@ -54,18 +60,30 @@ submit = false;
 		apiUrl = "/Auth/vendorlogin";
 
     this.http.post<string>(this.baseUrl + apiUrl, loginCredential).subscribe((response) => {
-        this.isAuth = true;
-        this.Role = userType;
-        this.authStatusListener.next({isAuth : true, Role : userType});
-        Swal.fire(
-            'Success!',
-            'Login is Successful',
-            'success'
-          )
+      Swal.fire(
+        'Success!',
+        'Login is Successful',
+        'success'
+        )
         // sessionStorage.setItem("email", cred.email);
         sessionStorage.setItem("jwtToken", response["value"]);
+        this.isAuth = true;
+        this.Role = this.getRole();
         sessionStorage.setItem("Role", this.Role);
-        this.route.navigate(['/']);
+        this.authStatusListener.next({isAuth : true, Role : this.Role});
+        if(this.Role ===  "User")
+        {
+          this.route.navigate(['/user/dashboard']);
+        }
+        else if(this.Role === "Vendor")
+        {
+          this.route.navigate(['/vendor/dashboard']);
+        }
+        else
+        {
+          this.route.navigate(['/']);
+          
+        }
     },(error) =>{
         Swal.fire(
             'Oops!',

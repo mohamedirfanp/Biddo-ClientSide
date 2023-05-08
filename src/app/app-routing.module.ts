@@ -12,19 +12,20 @@ import { VendordashboardComponent } from './VendorSection/vendordashboard/vendor
 import { ProfileComponent } from './Shared/profile/profile.component';
 import { ChatComponent } from './Shared/chat/chat.component';
 import { ContactUsComponent } from './Shared/contact-us/contact-us.component';
+import { AdmindashboardComponent } from './AdminSection/admindashboard/admindashboard.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch : 'full'},
   { path: 'profile', component: ProfileComponent},
   { path: 'chat', component: ChatComponent},
+  { path: 'contactUs', component: ContactUsComponent, canActivate : [AuthGuard]},
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/signup', component: SignupComponent },
   { path: 'user/dashboard', component: DashboardComponent, canActivate : [AuthGuard]},
   { path: 'user/event', component: EventComponent, canActivate : [AuthGuard]},
-  { path: 'contactUs', component: ContactUsComponent, canActivate : [AuthGuard]},
   { path: 'vendor/auction', component: AuctionComponent, canActivate : [AuthGuard]},
-  { path: 'contactUs', component: ContactUsComponent, canActivate : [AuthGuard]},
   { path: 'vendor/dashboard', component: VendordashboardComponent, canActivate : [AuthGuard]},
+  { path: 'admin/dashboard', component: AdmindashboardComponent, canActivate : [AuthGuard]}
 ];
 
 @NgModule({

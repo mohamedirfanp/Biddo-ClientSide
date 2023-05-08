@@ -12,6 +12,10 @@
     box-sizing: border-box;
 }
 
+:root {
+    --header-color: #72ebeb;
+}
+
 body {
     /* width: calc(100%); */
     /* height: 100vh; */
@@ -19,7 +23,11 @@ body {
     position: relative;
     top: 0;
     transition: all 0.5s ease;
-    background-image: url("https://wallpapercave.com/wp/wp9284176.jpg");
+    /* background-image: url("https://wallpapercave.com/wp/wp9284176.jpg"); */
+    background-color: #191b22;
+    /* background-image: 
+    radial-gradient(at 40% 33%, hsl(205.62, 38%, 49%) 0, transparent 59%), 
+    radial-gradient(at 82% 65%, hsl(205.62, 38%, 49%) 0, transparent 55%); */
     object-fit: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

@@ -1,4 +1,7 @@
 
+*{
+    color : white;
+}
 .loginform{
     position: relative;
     top: 15%;
@@ -30,6 +33,7 @@
     font-size: 110%;
 }
 .logincontents input{
+    color : black;
     display: block;
     width: 85%;
     padding: 1.5%;
@@ -64,9 +68,7 @@
     margin-left: 7%;
     padding: 2%;
     color:whitesmoke;
-    /*background-color: rgb(243, 52, 141);*/
     background-color: rgba(0, 0, 0, 0.50);
-    border:2px solid rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     font-size: 100%;
     font-weight:bold;
@@ -74,55 +76,69 @@
     cursor: pointer;
 }
 
-.logincontents button:hover
-{
-    box-shadow: inset -5px -5px 10px rgba(255,255,255,0.05),
-    inset 5px 5px 15px rgba(0,0,0,0.5);
-    display: block;
-    transform: scale(0.98);
-}
+
 #userlogin
 {
     display: flex;
     justify-content: center;
+    color: white;
 }
 #vendorlogin
 {
     display: flex;
     justify-content: center;
+    color: white;
 }
 
 .usertab
 {
     margin-top: 2rem;
+
+}
+
+.my-custom-class
+{
+    color: white;
 }
 
 .glassmorphism-card
 {
+    color: whitesmoke;
+    background-color: transparent;
+    border: 1px solid var(--header-color);
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    box-shadow: 5px 5px 5px var(--header-color);
+    /* box-shadow: 8px 8px 9px -6px #444; */
     margin: 5rem;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.4);
     overflow: hidden;
-    backdrop-filter: blur(5px);
     align-items: center;
     z-index: 10;
-
 }
 
 .signupWant
 {
     text-align: center;
 }
-.signup
-{
-    padding: 2%;
-    color:whitesmoke;
-    background-color: rgba(0, 0, 0, 0.50);
-    border:2px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    font-size: 100%;
-    font-weight:bold;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    cursor: pointer;
-}
 
+button {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--header-color);
+    border-radius: 5px;
+    padding: .5rem;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+  
+    margin-right: .3rem;
+    margin-left: .3rem;
+  
+  }
+  
+  button:hover {
+    color: whitesmoke;
+    transform: scale(1.1);
+    outline: 1px solid rgba(255, 0, 0, 0.2);
+    background-color: rgba(61, 59, 59, 0.5);
+    border-radius: 5px;
+  }

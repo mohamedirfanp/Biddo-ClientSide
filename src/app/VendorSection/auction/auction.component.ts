@@ -16,6 +16,8 @@ export class AuctionComponent {
   public eventList;
   public quotedPrice;
 
+  bidSubmitted : boolean = false;
+
   constructor(private eventService : VendorService,private messageService: MessageService, private route : Router) {
 
   }
@@ -36,24 +38,43 @@ export class AuctionComponent {
     
   }
 
-  placeBid(eventId: number, selectedServiceName: string, bid : number) {
-    this.eventService.PlaceBid(eventId, selectedServiceName, bid).subscribe((response) => {
-      console.log(response);
-      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Bid Placed Successfully' });
-      this.getDetails();
-    },(error) => {
-      console.error(error);
-    });
+  placeBid(eventId: number, selectedServiceName: string, bid : number, minBudget : number) {
+    // this.bidSubmitted = true; 
+    if(bid < minBudget)
+    {
+      this.bidSubmitted = true;
+      return ;
+    }
+    else 
+    {
+      this.eventService.PlaceBid(eventId, selectedServiceName, bid).subscribe((response) => {
+        console.log(response);
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Bid Placed Successfully' });
+        this.getDetails();
+      },(error) => {
+        console.error(error);
+      });
+    }
+
   }
-  updateBid(bidId : number, bid : number)
+  updateBid(bidId : number, bid : number, existingBid : number)
   {
-    this.eventService.UpdateBid(bidId,bid).subscribe((response)=>{
-      console.log(response);
-      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Bid Updated Successfully' });
-      this.getDetails();
-    },(error)=>{
-      console.error(error);
-      Swal.fire('Oops!',error.error,"error");
-    })
+    if(!(bid > (existingBid+100)))
+    {
+      this.bidSubmitted = true;
+      return;
+    }
+    else
+    {
+      this.eventService.UpdateBid(bidId,bid).subscribe((response)=>{
+        console.log(response);
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Bid Updated Successfully' });
+        this.getDetails();
+      },(error)=>{
+        console.error(error);
+        Swal.fire('Oops!',error.error,"error");
+      })
+
+    }
   }
 }

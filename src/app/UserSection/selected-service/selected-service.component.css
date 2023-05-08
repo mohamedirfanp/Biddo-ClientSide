@@ -122,3 +122,9 @@ button {
 {
   padding: .5rem;
 }
+
+.vendor-rating
+{
+  display: flex;
+  gap:.3rem;
+}

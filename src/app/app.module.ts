@@ -35,6 +35,10 @@ import { DashboardComponent } from './UserSection/dashboard/dashboard.component'
 import { EventComponent } from './UserSection/event/event.component';
 import { VendordashboardComponent } from './VendorSection/vendordashboard/vendordashboard.component';
 import { AuctionComponent } from './VendorSection/auction/auction.component';
+import { ProfileComponent } from './Shared/profile/profile.component';
+import { ChatComponent } from './Shared/chat/chat.component';
+import { ContactUsComponent } from './Shared/contact-us/contact-us.component';
+import { AdmindashboardComponent } from './AdminSection/admindashboard/admindashboard.component';
 
 // Icon Module
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -43,9 +47,6 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { SelectedServiceComponent } from './UserSection/selected-service/selected-service.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { ProfileComponent } from './Shared/profile/profile.component';
-import { ChatComponent } from './Shared/chat/chat.component';
-import { ContactUsComponent } from './Shared/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ContactUsComponent } from './Shared/contact-us/contact-us.component';
     SelectedServiceComponent,
     ProfileComponent,
     ChatComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    AdmindashboardComponent
   ],
   imports: [
     BrowserModule,

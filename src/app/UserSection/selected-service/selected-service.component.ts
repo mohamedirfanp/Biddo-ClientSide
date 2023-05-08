@@ -76,4 +76,8 @@ rescheduleAuction(eventId : number, selectedServiceId : number, selectedServiceN
     );
   }
 
+  MoveToChat()
+  {
+    return this.eventService.MoveToChat();
+  }
 }

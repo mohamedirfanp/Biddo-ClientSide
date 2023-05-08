@@ -73,5 +73,34 @@ export class SharedService {
   {
     return this.http.post(environment.API_URL + '/chat/send/message', {message : message, conversationId : conversationId})
   }
+  sendMessageForTicket(message : string, ticketId : number)
+  {
+    return this.http.post(environment.API_URL + '/chat/send/ticket/message', {message : message, ticketId : ticketId})
+  }
+
+
+  getTickets()
+  {
+    return this.http.get(environment.API_URL + '/help/get/Tickets');
+  }
+
+  createTicket(newTicket : any)
+  {
+    return this.http.post(environment.API_URL + '/help/create/Ticket', newTicket);
+  }
+  getChatForTickets(ticketId : number)
+  {
+    return this.http.get(environment.API_URL + '/chat/get/chat/tickets/' + ticketId );
+  }
+
+  getAllTickets()
+  {
+    return this.http.get(environment.API_URL + '/help/get/all/Tickets');
+  }
+
+  closeTicketStatus(ticketId : number)
+  {
+    return this.http.put(environment.API_URL + '/help/close/ticket', ticketId);
+  }
 
 }

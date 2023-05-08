@@ -1,17 +1,22 @@
 <div class="main-own">
     <div class="main-own-left">
-        <ng-container *ngFor="let conversation of conversationList; let i=index">
-            <a (click)="onShowChat(conversation.conversationId, i);">
+        <ng-container *ngFor="let conversation of conversationList; let i=index" >
+            <a (click)="onShowChatWrapper(conversation.conversationId, i);">
                 <div class="user-container">
                     <ng-container *ngIf="currentRole === 'User'">
-                        <div class="profile-pic">{{(conversation.vendorName)[0].toUpperCase()}}</div>
+                        <div class="profile-pic" [ngStyle]="{'background-color': getColor(conversation.vendorName)}">
+                            {{ conversation.vendorName[0].toUpperCase() }}
+                          </div>
+                          
                         <div class="user-info">
                             <div class="user-name">{{conversation.vendorName}}</div>
                             <div class="last-message">{{conversation.vendorEmail}}</div>
                         </div>
                     </ng-container>
                     <ng-container *ngIf="currentRole === 'Vendor'">
-                        <div class="profile-pic">{{(conversation.name)[0].toUpperCase()}}</div>
+                        <div class="profile-pic" [ngStyle]="{'background-color': getColor(conversation.name)}">
+                            {{(conversation.name)[0].toUpperCase()}}
+                          </div>
                         <div class="user-info">
                             <div class="user-name">{{conversation.name}}</div>
                             <div class="last-message">{{conversation.email}}</div>
@@ -28,20 +33,23 @@
             <div class="flex">
                 Click on a chat to start messaging.
             </div>
-
         </ng-container>
         <ng-container *ngIf="currentIdx !== -1">
             <div class="chat-header">
                 <ng-container *ngIf="currentRole === 'User'">
-                    <div class="profile-pic">{{(conversationList[currentIdx].vendorName)[0].toUpperCase()}}</div>
+                    <div class="profile-pic" [ngStyle]="{'background-color': getColor(conversationList[currentIdx].vendorName)}">
+                        {{ (conversationList[currentIdx].vendorName)[0].toUpperCase()}}
+                      </div>
                     <div class="user-name">{{conversationList[currentIdx].vendorName}}</div>
                 </ng-container>
                 <ng-container *ngIf="currentRole === 'Vendor'">
-                    <div class="profile-pic">{{(conversationList[currentIdx].name)[0].toUpperCase()}}</div>
+                    <div class="profile-pic" [ngStyle]="{'background-color': getColor(conversationList[currentIdx].name)}">
+                        {{ (conversationList[currentIdx].name)[0].toUpperCase()}}
+                      </div>
                     <div class="user-name">{{conversationList[currentIdx].name}}</div>
                 </ng-container>
             </div>
-            <div class="chat">
+            <div class="chat" #scrollMe [scrollTop]="scrollMe.scrollHeight">
                 <ng-container *ngFor="let group of chatGroups">
                     <div class="date">{{ group.date }}</div>
                   
@@ -72,4 +80,3 @@
 
 
 </div>
-

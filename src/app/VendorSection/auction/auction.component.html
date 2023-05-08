@@ -38,22 +38,26 @@
                                     <div>
                                         <label for="price">Price: </label>
                                         <input type="number" name="price" id="price"  placeholder="Enter your price" [(ngModel)]="s.quotedPrice">
+                                        <br>
+                                        <mat-error *ngIf="bidSubmitted && s.quotedPrice < s.selectedService.minBudget" style="font-style: italic;">*Bid Must Greater than Min Budget</mat-error>
                                     </div>
-                                    <button class="bid" (click)="placeBid(e.Event.eventId,s.selectedService.selectServiceName,s.quotedPrice)">Bid</button>
+                                    <button class="bid" (click)="placeBid(e.Event.eventId,s.selectedService.selectServiceName,s.quotedPrice,s.selectedService.minBudget)">Bid</button>
                                 </div>
                             </ng-container>
         
                             <ng-container *ngIf="s.bidding !== null">
-                                <div class="action-items">
+                                <div class="action-item">
                                     <p>Already quoted price: {{s.bidding.bid}}</p>
+                                    <p style="font-style: italic; color: yellow; align-items: center; font-size: .7rem;">*Minimum Increment Amount is 100 per Bid</p>
                                 </div>
                                 <div class="action-items">
                                     <div>
                                         <label for="price">Price: </label>
                                         <input type="number" name="price" id="price"  placeholder="Enter your price" [(ngModel)]="s.quotedPrice">
+                                        <mat-error *ngIf="bidSubmitted" style="font-style: italic;">*Minimum Increment Amount is 100</mat-error>
                                     </div>
                                     
-                                    <button class="bid" (click)="updateBid(s.bidding.bidId,s.quotedPrice)">Change Bid</button>
+                                    <button class="bid" (click)="updateBid(s.bidding.bidId,s.quotedPrice,s.bidding.bid)">Change Bid</button>
                                 </div>
                             </ng-container>
         

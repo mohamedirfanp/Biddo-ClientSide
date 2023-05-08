@@ -2,7 +2,7 @@
 
     <div>
         <mat-toolbar class="head" style="background-color: #56648d; color : black">
-          <a routerLink=""><span>Biddo</span></a>
+          <a routerLink="" style="text-decoration: none; color: whitesmoke"><span>Biddo</span></a>
           <div class="spacer">
 
               <ng-container >
@@ -133,5 +133,42 @@
                 </div>
             </ul>
         </div>
+    </ng-container>
+    <ng-container  *ngIf="Role === 'Admin' ">
+        <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed':''">
+            <div class="logo-container">
+                <button class="logo" (click)="toggleCollapse()">B</button>
+                <div class="logo-text" *ngIf="collapsed">Biddo</div>
+                <button class="btn-close" *ngIf="collapsed" (click)="closeSidenav()">
+                    <fa-icon [icon] = "['fas','times']" class="fa-times"></fa-icon>
+                </button>
+            </div>
+            <ul class="sidenav-nav">
+                <li class="sidenav-nav-item">
+                    <a class="sidenav-nav-link" [routerLink]="['admin/dashboard']"
+                        routerLinkActive="active" [routerLinkActiveOptions] = "{exact: true}"  
+                    >
+                        <fa-icon class="sidenav-link-icon" [icon]="['fas','home']"></fa-icon>
+                        <span class="sidenav-link-text" *ngIf="collapsed">Dashboard</span>
+                    </a>
+                </li>
+            <li class="sidenav-nav-item">
+                <a class="sidenav-nav-link" [routerLink]="['contactUs']"
+                    routerLinkActive="active" [routerLinkActiveOptions] = "{exact: true}" >
+                    <fa-icon class="sidenav-link-icon" [icon]="['fas','headset']"></fa-icon>
+                    <span class="sidenav-link-text" *ngIf="collapsed">Contact Us</span>
+                </a>
+            </li>
+                <div class="sidenav-nav-item bottom">
+                    <button class="sidenav-nav-link"
+                        (click)="OnLogout();" style="color : black">
+                            <fa-icon class="sidenav-link-icon" [icon]="['fas', 'power-off']"></fa-icon>
+    
+                            <span class="sidenav-link-text" *ngIf="collapsed">Logout</span>
+                    </button>
+                </div>
+            </ul>
+        </div>
+
     </ng-container>
 </ng-container> 

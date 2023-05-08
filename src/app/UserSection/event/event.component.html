@@ -3,7 +3,9 @@
   <div class="glassmorphism-card">
     <mat-horizontal-stepper #stepper [linear]="isLinear" style="background: none;" >
         <mat-step [stepControl]="eventForm">
-          <ng-template matStepLabel>Fill out Event Details</ng-template>
+          <ng-template matStepLabel style="color:white"><span>
+            Fill out Event Details
+          </span> </ng-template>
           <form [formGroup]="eventForm" style="width: 500px;">
             <mat-form-field>
               <mat-label>Event Name</mat-label>
@@ -48,7 +50,8 @@
           </form>
         </mat-step>
         <mat-step [stepControl]="addressForm">
-          <ng-template matStepLabel>Fill out Event Address</ng-template>
+          <ng-template matStepLabel>
+            <span>Fill out Event Address</span></ng-template>
           <form [formGroup]="addressForm">
             <mat-form-field>
               <mat-label>Address Lane</mat-label>
@@ -90,7 +93,9 @@
           </form>
         </mat-step>
         <mat-step [stepControl]="serviceForm">
-          <ng-template matStepLabel>Fill out Services Needed</ng-template>
+          <ng-template matStepLabel><span>
+            Fill out Services Needed
+          </span></ng-template>
           <form style="margin : 2rem;">
             <label class="card-header">Provided Service</label>
             <div *ngFor="let service of serviceOptions; let i = index">
@@ -113,7 +118,9 @@
         
         
         <mat-step [stepControl]="budgetForm">
-          <ng-template matStepLabel>Fill out Event Budget</ng-template>
+          <ng-template matStepLabel><span>
+            Fill out Event Budget
+          </span></ng-template>
           <div *ngFor="let group of serviceForms; let i = index">
           <form [formGroup]="group">
               <mat-label>Service {{ i + 1 }}</mat-label>

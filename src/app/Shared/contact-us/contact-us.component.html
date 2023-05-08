@@ -1,28 +1,26 @@
-<!-- <div class="main-own">
-    <div class="main-right-top">
-        <button>+ Raise a Ticket</button>
-    </div>
-    <div class="main-own-left">
-        <h2>Tickets</h2>
-        <ng-container *ngFor="let conversation of conversationList; let i=index">
-            <a (click)="onShowChat(conversation.conversationId, i);">
-                <div class="user-container">
-                    <ng-container *ngIf="currentRole === 'User'">
-                        <div class="profile-pic">{{(conversation.vendorName)[0].toUpperCase()}}</div>
-                        <div class="user-info">
-                            <div class="user-name">{{conversation.vendorName}}</div>
-                            <div class="last-message">{{conversation.vendorEmail}}</div>
-                        </div>
-                    </ng-container>
-                    <ng-container *ngIf="currentRole === 'Vendor'">
-                        <div class="profile-pic">{{(conversation.name)[0].toUpperCase()}}</div>
-                        <div class="user-info">
-                            <div class="user-name">{{conversation.name}}</div>
-                            <div class="last-message">{{conversation.email}}</div>
-                        </div>
-                    </ng-container>
+<div class="main-right-top" >
 
-                    
+<ng-container *ngIf="currentRole !=='Admin'">
+
+        <button (click)="showCreateTicket()">+ Raise a Ticket</button>
+    </ng-container>
+</div>
+<div class="main-own">
+    <div class="main-own-left">
+        <h2 style="text-align: center;">Tickets</h2>
+        <ng-container *ngFor="let ticket of TicketsList; let i=index">
+            <a (click)="onShowChat(ticket.queryId, i);">
+                <div class="user-container">
+                    <ng-container *ngIf="ticket.queryType === 'Query'">
+                        <div ><img class="profile-pic" src="../../../assets/ticketIcon.png" alt="ticket"></div>
+                    </ng-container>
+                    <ng-container *ngIf="ticket.queryType === 'Issue'">
+                        <div ><img class="profile-pic" src="../../../assets/issueIcon.jpg" alt="issue"></div>
+                    </ng-container>
+                    <div class="user-info">
+                        <div class="user-name">{{ticket.queryTitle}}</div>
+                        <div class="last-message">{{ticket.queryDesciption}}</div>
+                    </div>
                 </div>
             </a>
         </ng-container>
@@ -36,14 +34,13 @@
         </ng-container>
         <ng-container *ngIf="currentIdx !== -1">
             <div class="chat-header">
-                <ng-container *ngIf="currentRole === 'User'">
-                    <div class="profile-pic">{{(conversationList[currentIdx].vendorName)[0].toUpperCase()}}</div>
-                    <div class="user-name">{{conversationList[currentIdx].vendorName}}</div>
+                <ng-container *ngIf="TicketsList[currentIdx].queryType === 'Query'">
+                    <div ><img class="profile-pic" src="../../../assets/ticketIcon.png" alt="ticket"></div>
                 </ng-container>
-                <ng-container *ngIf="currentRole === 'Vendor'">
-                    <div class="profile-pic">{{(conversationList[currentIdx].name)[0].toUpperCase()}}</div>
-                    <div class="user-name">{{conversationList[currentIdx].name}}</div>
+                <ng-container *ngIf="TicketsList[currentIdx].queryType === 'Issue'">
+                    <div ><img class="profile-pic" src="../../../assets/issueIcon.jpg" alt="Issue"></div>
                 </ng-container>
+                <div class="user-name">{{TicketsList[currentIdx].queryTitle}}</div>
             </div>
             <div class="chat">
                 <ng-container *ngFor="let group of chatGroups">
@@ -67,13 +64,61 @@
                   </ng-container>
                   
             </div>
-            <div class="input-div">
-                <input type="text" [(ngModel)]="conversationList[currentIdx].message"/>
-                <button (click)="sendMessage()">Send</button>
-            </div>
+            <ng-container *ngIf="TicketsList[currentIdx].status === false">
+
+                <div class="input-div">
+                    <input type="text" [(ngModel)]="TicketsList[currentIdx].message"/>
+                    <button (click)="sendMessage()">Send</button>
+                    <ng-container *ngIf="currentRole ==='Admin'">
+                        <button (click)="closeTicket()">Close Ticket</button>
+                    </ng-container>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="TicketsList[currentIdx].status === true">
+                <p style="color : red; text-align: center;">Ticket is Closed</p>
+            </ng-container>
+
         </ng-container>
     </div>
 
 
 </div>
- -->
+
+
+
+
+<p-dialog header="Create a Ticket" [(visible)]="createTicketVisible" [draggable]="false" [resizable]="false" >
+    <div>
+        <div class="card">
+            <div class="form-group">
+                <label>Title : </label>
+                <input type="text" [(ngModel)]="newTicket.TicketTitle" minlength="15"/>
+                <mat-error *ngIf="isSubmitted && newTicket.TicketTitle === ''">Please provide a valid Title</mat-error>
+            </div>
+            <div class="form-group">
+                <label>Type : </label>
+                <select [(ngModel)]="newTicket.TicketType">
+                    <option value="Query">Query</option>
+                    <option value="Issue">Issue</option>
+                </select>
+                <mat-error *ngIf="isSubmitted && newTicket.TicketType === ''">Please provide a valid Type</mat-error>
+            </div>
+
+            <div class="form-group">
+                <label>Description : </label>
+                <textarea [(ngModel)]="newTicket.TicketDescription" rows="10" cols="20"></textarea>
+                <mat-error *ngIf="isSubmitted && newTicket.TicketDescription === ''">Please provide a valid Description</mat-error>
+            </div>
+        </div>
+        <div class="btn-class">
+            <button (click)="closeDialog()" class="btn">
+                Cancel
+            </button>
+            <button (click)="CreateTicket()" class="btn">
+                Submit
+            </button>
+        </div>
+    </div>
+</p-dialog>
+
