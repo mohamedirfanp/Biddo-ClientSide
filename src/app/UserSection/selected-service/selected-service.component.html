@@ -1,5 +1,5 @@
 <div class="selectServAlign" *ngIf="visible">
-    <!-- TODO : Remove Not operator -->
+    <p-toast></p-toast>
     <ng-container *ngIf="eventList[0].Event.isAuctionCompleted === false">
         <div class="waitCard">
 
@@ -10,7 +10,7 @@
                 {{eventList[0].Event.auctionTimeLimit.split('T')[1].split('.')[0]}}</h3>
         </div>
     </ng-container>
-    <!-- TODO : Remove Not operator -->
+
     <ng-container *ngIf="eventList[0].Event.isAuctionCompleted">
         <div *ngFor="let event of eventList">
             <ng-container *ngFor="let service of event.Services;let i=index">
@@ -70,9 +70,6 @@
         
                                                                 </summary>
                                                                 <ul>
-                                                                    <!-- <li>
-                                                                        <button (click)="confirm1(i,bidIdx)" label="Confirm">Accept</button>
-                                                                    </li> -->
                                                                     <li>
                                                                         <p>Vendor Name : {{service.vendorList[bidIdx].vendorName}}</p>
                                                                         <p>Vendor Email : {{service.vendorList[bidIdx].vendorEmail}}</p>
@@ -95,18 +92,16 @@
                                             <div class="row">
                                                 <li>
                                                     <div class="col-md-6">
-                                                      
-                                                            <details >
+                                                            <details>
                                                                 <summary>
                                                                     No Bids Available
-                                                                    <div>
-                                                                        <p *ngIf="event.isCompleted === false">Suggest to Reschedule this Auction</p>
-                                                                        
-                                                                    </div>
+                                                                    
+                                                                    <p  *ngIf="event.Event.isCompleted === false">Suggest to Reschedule this Auction</p>    
         
                                                                 </summary>
                                                                 <ul>
-                                                                    <li *ngIf="event.isCompleted === false">
+                                                                    
+                                                                    <li *ngIf="event.Event.isCompleted === false">
                                                                         <button (click)="rescheduleAuction(service.selectedService.eventId,service.selectedService.selectedServiceId,service.selectedService.selectServiceName)">Reschedule Auction</button>
                                                                     </li>
                                                                 </ul>

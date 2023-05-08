@@ -32,8 +32,8 @@
                     <mat-label>Event Time</mat-label>
                     <input [ngxTimepicker]="toggleTimepicker" [disableClick]="true" readonly formControlName="eventTime" matInput>
                   </mat-form-field>
-                  <ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
-                    <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+                  <ngx-material-timepicker-toggle [for]="toggleTimepicker" class="time-clock"></ngx-material-timepicker-toggle>
+                    <ngx-material-timepicker #toggleTimepicker ></ngx-material-timepicker>
                   </div>
                   <mat-error *ngIf="eventForm.controls['eventTime'].invalid">Please provide a valid Time.</mat-error>
             <br>
@@ -59,7 +59,6 @@
               <mat-error *ngIf="addressForm.controls['addressLane'].invalid">Please provide a valid Address Lane.</mat-error>
             </mat-form-field>
             <br>
-  
             <mat-form-field>
               <mat-label>City</mat-label>
               <input matInput formControlName="city" placeholder="City">

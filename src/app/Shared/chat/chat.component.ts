@@ -14,6 +14,7 @@ export class ChatComponent {
   chatsList : any[];
   chatGroups : any[];
   currentIdx : number = -1;
+  regex = /[a-zA-Z0-9]+/; 
 
   currentRole : string;
   private interval: number = 15000; // 15 seconds
@@ -97,6 +98,12 @@ export class ChatComponent {
   sendMessage()
   {
     const message = this.conversationList[this.currentIdx].message;
+    if (this.regex.test(message)) {
+      console.log("Message contains alphabets or numbers.");
+    } else {
+      console.log("Message does not contain alphabets or numbers.");
+    }
+
     const conversationId = this.conversationList[this.currentIdx].conversationId;
 
     this.sharedService.sendMessage(message, conversationId).subscribe((response) => {

@@ -10,7 +10,7 @@ export class AdmindashboardComponent {
 	filter : any = "User"
 	ChoosenList : any[];
 	displayedColumns: string[] = ['userId', 'name', 'email', 'phoneNumber'];
-	displayedColumnsVendor: string[] = ['vendorId', 'name', 'email', 'phoneNumber'];
+	displayedColumnsVendor: string[] = ['vendorId', 'name', 'email', 'phoneNumber', 'vendorCompanyName', 'vendorGSTNumber', 'vendorLocation'];
 
 	constructor(private adminService : AdminService) {}
 

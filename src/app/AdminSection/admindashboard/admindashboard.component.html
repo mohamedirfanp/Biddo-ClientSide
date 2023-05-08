@@ -76,6 +76,24 @@
                       <th mat-header-cell *matHeaderCellDef> Phone Number </th>
                       <td mat-cell *matCellDef="let element"> {{element.vendorPhoneNumber}} </td>
                     </ng-container>
+
+                    <!-- Company Name Column -->
+                    <ng-container matColumnDef="vendorCompanyName">
+                      <th mat-header-cell *matHeaderCellDef> Company Name</th>
+                      <td mat-cell *matCellDef="let element"> {{element.vendorCompanyName}} </td>
+                    </ng-container>
+
+                    <!-- GST Number Column -->
+                    <ng-container matColumnDef="vendorGSTNumber">
+                      <th mat-header-cell *matHeaderCellDef> GST Number </th>
+                      <td mat-cell *matCellDef="let element"> {{element.vendorGSTNumber}} </td>
+                    </ng-container>
+
+                    <!-- Company location Column -->
+                    <ng-container matColumnDef="vendorLocation">
+                      <th mat-header-cell *matHeaderCellDef> Company </th>
+                      <td mat-cell *matCellDef="let element"> {{element.vendorLocation}} </td>
+                    </ng-container>
                   
                     <tr mat-header-row *matHeaderRowDef="displayedColumnsVendor"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumnsVendor;"></tr>

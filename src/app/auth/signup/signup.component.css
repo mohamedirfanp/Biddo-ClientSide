@@ -174,3 +174,8 @@ button {
     background-color: rgba(61, 59, 59, 0.5);
     border-radius: 5px;
   }
+
+  .my-custom-class
+{
+    color: white;
+}

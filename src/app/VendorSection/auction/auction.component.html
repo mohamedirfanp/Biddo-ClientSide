@@ -21,9 +21,8 @@
                     <div class="description">
                         <p>{{e.Event.eventDescription}}</p>
                         <p>Address: {{e.Event.eventAddress}}</p>
-                    </div>
-                    <div>
-                        Expected Footfall: {{e.Event.totalParticipates}}
+                        <p>Auction Ends : {{e.Event.auctionTimeLimit.split("T")[0]}} & {{e.Event.auctionTimeLimit.split("T")[1].split('.')[0]}}</p>
+                        <p>Expected Footfall: {{e.Event.totalParticipates}}</p>
                     </div>
                     <hr>
                     <div class="services">
@@ -54,9 +53,8 @@
                                     <div>
                                         <label for="price">Price: </label>
                                         <input type="number" name="price" id="price"  placeholder="Enter your price" [(ngModel)]="s.quotedPrice">
-                                        <mat-error *ngIf="bidSubmitted" style="font-style: italic;">*Minimum Increment Amount is 100</mat-error>
+                                        <mat-error *ngIf="bidSubmitted && (s.quotedPrice < (s.bidding.bid + 100))" style="font-style: italic;">*Minimum Increment Amount is 100</mat-error>
                                     </div>
-                                    
                                     <button class="bid" (click)="updateBid(s.bidding.bidId,s.quotedPrice,s.bidding.bid)">Change Bid</button>
                                 </div>
                             </ng-container>
